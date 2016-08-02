@@ -1,0 +1,111 @@
+Version 41
+-------------------------------
+-	Sudah menggunakan icon baru.
+-	Penambahan field DCRE di MV_ARTICLES untuk keperluan last updated.
+-	Penambahan waiting cursor pada saat search memo_discount, dan pada saat me-click header.
+-	Penambahan waiting cursor di stock display dan search item.
+-------------------------------
+
+Version 42
+-------------------------------
+-	Mengubah query Print Label Search dan Print Label Detail menjadi query baru.
+-------------------------------
+
+Version 42.1.1
+-------------------------------
+-	Mengubah query Print Label Filename menjadi "SELECT LPAD(SERCINREC, 8,'0') AS FILENAME FROM STOENTRE WHERE SERNUSR = :PONUMBER;" jika tidak ditemukan dari ECDCEXCDE.
+-------------------------------
+
+Version 42.1.2
+-------------------------------
+-	Fixed Bug Reception Without Order Status Print does not changed when generate file.
+-------------------------------
+
+Version 42.1.3
+-------------------------------
+-	Fixed Bug Upload Promo membaca excel melebihi line yang ada.
+-------------------------------
+
+Version 42.2.1
+-------------------------------
+-	Fixed Not Yet known Bug dimana membaca dcdcoca menjadi get barcode
+-	Mengubah select data price menjadi:
+		KDSPKCUSTOM.GET_PRICELBL(p_cinv in number, p_site in number, p_date in date)
+-------------------------------
+
+Version 42.2.2
+-------------------------------
+-	Fixed Not Yet known Bug dimana discount printout masih mencari server, dimana seharusnya mencari server lokal
+
+-------------------------------
+
+Version 42.3.0
+-------------------------------
+-	Penambahan Menu Generate Label STCK
+-------------------------------
+
+Version 42.4.0
+-------------------------------
+-	Penambahan Menu Upload Inventory
+-------------------------------
+
+Version 42.4.1
+-------------------------------
+-	Mengubah sheet name untuk upload inventory menjadi "intinv"
+-------------------------------
+
+Version 42.4.2
+-------------------------------
+-	Mengubah query untuk generate label STCK
+-------------------------------
+
+Version 42.4.3
+-------------------------------
+-	Mengubah query untuk Upload Inventory
+-------------------------------
+
+Version 42.4.4
+-------------------------------
+-	Memperbaiki query untuk generate label STCK
+-------------------------------
+
+Version 42.4.5
+-------------------------------
+-	Memperbaiki query untuk generate label by PO
+-------------------------------
+
+Version 42.4.6
+-------------------------------
+-	Memperbaiki query untuk generate label by PO agar PO yang awaiting delivery pun terbentuk label filenya
+-------------------------------
+
+Version 43.0.0
+-------------------------------
+-	Pembuatan Menu Baru Stock Take
+-	Perubahan letak Menu2
+-------------------------------
+
+Version 43.1.0
+-------------------------------
+-	Penambahan Huruf K dan 4 digit terakhir no Nota di Nota Sales Input
+-------------------------------
+
+Version 43.2.0
+-------------------------------
+-	Penambahan Report di Stock Take Report
+-------------------------------
+
+Version 43.2.1
+-------------------------------
+-	Fix Bug quote in function GetFileContentByPONumber
+-------------------------------
+
+Version 43.2.2
+-------------------------------
+- quote in function GetFileContentByPONumber
+-	Fix Font Size in Nota 
+-------------------------------
+Version 43.3.1
+-------------------------------
+-	New menu : Slip Pembayaran
+-------------------------------

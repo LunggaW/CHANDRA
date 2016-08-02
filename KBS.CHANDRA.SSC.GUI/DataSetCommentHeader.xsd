@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetCommentHeader" targetNamespace="http://tempuri.org/DataSetCommentHeader.xsd" xmlns:mstns="http://tempuri.org/DataSetCommentHeader.xsd" xmlns="http://tempuri.org/DataSetCommentHeader.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="CHANDRA" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CHANDRA (Settings)" ParameterPrefix=":" PropertyReference="ApplicationSettings.KBS.CHANDRA.SSC.GUI.Properties.Settings.GlobalReference.Default.CHANDRA" Provider="Oracle.DataAccess.Client" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KDSFAKTURPAJAKTableAdapter" GeneratorDataComponentClassName="KDSFAKTURPAJAKTableAdapter" Name="KDSFAKTURPAJAK" UserDataComponentName="KDSFAKTURPAJAKTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CHANDRA (Settings)" DbObjectName="USSC.KDSFAKTURPAJAK" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT COMMENTHEADER, COMMENTFOOTER FROM USSC.KDSFAKTURPAJAK</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="COMMENTHEADER" DataSetColumn="COMMENTHEADER" />
+              <Mapping SourceColumn="COMMENTFOOTER" DataSetColumn="COMMENTFOOTER" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetCommentHeader" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSetCommentHeader" msprop:Generator_UserDSName="DataSetCommentHeader">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="KDSFAKTURPAJAK" msprop:Generator_TableClassName="KDSFAKTURPAJAKDataTable" msprop:Generator_TableVarName="tableKDSFAKTURPAJAK" msprop:Generator_TablePropName="KDSFAKTURPAJAK" msprop:Generator_RowDeletingName="KDSFAKTURPAJAKRowDeleting" msprop:Generator_RowChangingName="KDSFAKTURPAJAKRowChanging" msprop:Generator_RowEvHandlerName="KDSFAKTURPAJAKRowChangeEventHandler" msprop:Generator_RowDeletedName="KDSFAKTURPAJAKRowDeleted" msprop:Generator_UserTableName="KDSFAKTURPAJAK" msprop:Generator_RowChangedName="KDSFAKTURPAJAKRowChanged" msprop:Generator_RowEvArgName="KDSFAKTURPAJAKRowChangeEvent" msprop:Generator_RowClassName="KDSFAKTURPAJAKRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="COMMENTHEADER" msprop:Generator_ColumnVarNameInTable="columnCOMMENTHEADER" msprop:Generator_ColumnPropNameInRow="COMMENTHEADER" msprop:Generator_ColumnPropNameInTable="COMMENTHEADERColumn" msprop:Generator_UserColumnName="COMMENTHEADER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COMMENTFOOTER" msprop:Generator_ColumnVarNameInTable="columnCOMMENTFOOTER" msprop:Generator_ColumnPropNameInRow="COMMENTFOOTER" msprop:Generator_ColumnPropNameInTable="COMMENTFOOTERColumn" msprop:Generator_UserColumnName="COMMENTFOOTER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,5 @@
+﻿--------------------------------------------------------
+--  DDL for Sequence KDSSTOCKTAKESSC_SEQ
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "USSC"."KDSSTOCKTAKESSC_SEQ"  MINVALUE 1 MAXVALUE 99999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  CYCLE ;
