@@ -1,0 +1,45 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  
+  <configSections></configSections>
+  <connectionStrings>
+    <!--<add name="KBS.CHANDRA.SSC.GUI.Properties.Settings.CHANDRA" connectionString="DATA SOURCE=192.168.0.130/EYCTST;PASSWORD=PSSC;USER ID=USSC" providerName="Oracle.DataAccess.Client"/>-->
+    <!--<add name="KBS.CHANDRA.SSC.GUI.Properties.Settings.CHANDRA" connectionString="DATA SOURCE=192.168.152.128/EYCTST;PASSWORD=PSSC;USER ID=USSC" providerName="Oracle.DataAccess.Client"/>-->
+    <!--<add name="Entities" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=Oracle.DataAccess.Client;provider connection string=&quot;DATA SOURCE=192.168.0.130/EYCTST;PASSWORD=PSSC;USER ID=USSC&quot;" providerName="System.Data.EntityClient"/>-->
+    <!--<add name="Entities" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=Oracle.DataAccess.Client;provider connection string=&quot;DATA SOURCE=192.168.152.128/EYCTST;PASSWORD=PSSC;USER ID=USSC&quot;" providerName="System.Data.EntityClient"/>-->
+  </connectionStrings>
+  <appSettings>
+    <!--Connection String that contains Promo, Label-->
+    <add key="ConnectionString" value="User Id=USSC;Password=PSSC;Data Source=//192.168.21.100/EYCPRD"/>
+    <!--<add key="ConnectionString" value="User Id=USSC;Password=PSSC;Data Source=//192.168.0.130/EYCTST"/>-->
+    <!--Connection String that contains SSC, MV_ARTICLES, V_SITE, V_BRAND-->
+<<<<<<< HEAD
+    <add key="ConnectionStringLocal" value="User Id=USSC;Password=PSSC;Data Source=//localhost/xe"/>
+=======
+    <add key="ConnectionStringLocal" value="User Id=USSC;Password=PSSC;Data Source=//192.168.0.88/xe"/>
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <add key="FileNameSTCK" value="label"/>
+    <add key="MinutesToLogout" value="5"/>
+    <add key="ImageFooterMemoDiscount" value="Image\KDSLogo.gif"/>
+    <add key="DefaultPrintLabelFilePath" value="C:"/>
+    <add key="SSCFileLocation" value="D:"/>
+    <add key="V_SITE_BATCHFILE" value="\SSC\SSC_V_SITE.bat"/>
+    <add key="V_BRAND_BATCHFILE" value="\SSC\SSC_V_BRAND.bat"/>
+    <add key="MV_ARTICLES_BATCHFILE" value="\SSC\SSC_MV_ARTICLES.bat"/>
+    <add key="MV_ARTICLES_LST" value="\SSC\outgoing\MV_ARTICLES.lst"/>
+    <add key="V_BRAND_LST" value="\SSC\outgoing\V_BRAND.lst"/>
+    <add key="V_SITE_LST" value="\SSC\outgoing\V_SITE.lst"/>
+  </appSettings>
+  <system.web>
+    <membership defaultProvider="ClientAuthenticationMembershipProvider">
+      <providers>
+        <add name="ClientAuthenticationMembershipProvider" type="System.Web.ClientServices.Providers.ClientFormsAuthenticationMembershipProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri=""/>
+      </providers>
+    </membership>
+    <roleManager defaultProvider="ClientRoleProvider" enabled="true">
+      <providers>
+        <add name="ClientRoleProvider" type="System.Web.ClientServices.Providers.ClientRoleProvider, System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" serviceUri="" cacheTimeout="86400"/>
+      </providers>
+    </roleManager>
+  </system.web>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup></configuration>

@@ -1,0 +1,18 @@
+﻿--------------------------------------------------------
+--  DDL for DB Link LINK2SSC
+--------------------------------------------------------
+
+  CREATE DATABASE LINK "LINK2SSC"
+   CONNECT TO "UEYC510" IDENTIFIED BY VALUES '05428194C4D0B9D2E87FD8910C2F8DAC6D'
+   USING '(DESCRIPTION = (ADDRESS_LIST =    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.0.130)(PORT = 1521))    )   (CONNECT_DATA =    (SERVICE_NAME = EYCTST)  ) )';
+
+
+
+
+--------------------------------------------------------
+--  DDL for DB Link LINK2USSCSERVER
+--------------------------------------------------------
+
+  CREATE DATABASE LINK "LINK2USSCSERVER"
+   CONNECT TO "USSC" IDENTIFIED BY VALUES '05A7E037A9899E231D13B0A03966D7D15B'
+   USING '(DESCRIPTION = (ADDRESS_LIST =    (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.0.130)(PORT = 1521))    )   (CONNECT_DATA =    (SERVICE_NAME = EYCTST)  ) )';

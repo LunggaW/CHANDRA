@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BE38E911-9E68-4473-AC8C-A23FBC5FBD2A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KBS.CHANDRA.SSC.GUI</RootNamespace>
+    <AssemblyName>KBS.CHANDRA.SSC.GUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>KBS.CHANDRA.SSC.GUI.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>KDS.ico</ApplicationIcon>
+  </PropertyGroup>
+<<<<<<< HEAD
+  <PropertyGroup />
+=======
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+  <ItemGroup>
+    <Reference Include="itextsharp, Version=5.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\itextsharp.dll</HintPath>
+    </Reference>
+<<<<<<< HEAD
+    <Reference Include="LinqToExcel, Version=1.10.1.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=x86">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\LinqToExcel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+      <Private>True</Private>
+=======
+    <Reference Include="LinqToExcel">
+      <HintPath>..\Library\LinqToExcel.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Library\log4net.dll</HintPath>
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+<<<<<<< HEAD
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+=======
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NLog">
+      <HintPath>..\Library\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+<<<<<<< HEAD
+    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.10.1\lib\Remotion.Interfaces.dll</HintPath>
+      <Private>True</Private>
+=======
+    <Reference Include="Remotion">
+      <HintPath>..\Library\Remotion.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\Library\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Interfaces">
+      <HintPath>..\Library\Remotion.Interfaces.dll</HintPath>
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+<<<<<<< HEAD
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+=======
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="DataSetCommentHeader.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetCommentHeader.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetTrxInvoice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetTrxInvoice.xsd</DependentUpon>
+    </Compile>
+=======
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <Compile Include="Program.cs" />
+    <Compile Include="ProgressBarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressBarForm.Designer.cs">
+      <DependentUpon>ProgressBarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GUI\TestMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TestMenu.Designer.cs">
+      <DependentUpon>TestMenu.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\TestMenu.resx">
+      <DependentUpon>TestMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressBarForm.resx">
+      <DependentUpon>ProgressBarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Report\Bank\BCABuktiSetoran.rdlc" />
+    <EmbeddedResource Include="Report\Bank\RaboBank.rdlc" />
+    <EmbeddedResource Include="Report\InvoiceLessThan500k.rdlc" />
+    <EmbeddedResource Include="Report\InvoiceGreaterThan500k.rdlc" />
+    <EmbeddedResource Include="Report\FakturPajak.rdlc" />
+=======
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <EmbeddedResource Include="Report\LoyaltyReportDetail.rdlc" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram1.cd" />
+<<<<<<< HEAD
+    <None Include="DataSetCommentHeader.xsc">
+      <DependentUpon>DataSetCommentHeader.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetCommentHeader.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetCommentHeader.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetCommentHeader.xss">
+      <DependentUpon>DataSetCommentHeader.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetTrxInvoice.xsc">
+      <DependentUpon>DataSetTrxInvoice.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetTrxInvoice.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetTrxInvoice.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetTrxInvoice.xss">
+      <DependentUpon>DataSetTrxInvoice.xsd</DependentUpon>
+    </None>
+=======
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <None Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+<<<<<<< HEAD
+    <None Include="packages.config" />
+=======
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KBS.CHANDRA.SSC.DATAMODEL\KBS.CHANDRA.SSC.DATAMODEL.csproj">
+      <Project>{53D52409-7642-4530-B3D0-68A215DA2269}</Project>
+      <Name>KBS.CHANDRA.SSC.DATAMODEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KBS.CHANDRA.SSC.FUNCTION\KBS.CHANDRA.SSC.FUNCTION.csproj">
+      <Project>{4359B0DC-13AD-4A0D-9888-A813A0D369CA}</Project>
+      <Name>KBS.CHANDRA.SSC.FUNCTION</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IconKDS.ico" />
+    <None Include="Image\CHANDRA-Logo.png" />
+    <None Include="Resources\KDS.bmp" />
+    <None Include="Resources\ChandraLogoTest.png" />
+    <None Include="Image\CHANDRA_LOGO2.png" />
+    <None Include="Image\KDS_Logo.png" />
+    <None Include="Image\KDS_Logo_Bottom.png" />
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\KDSLogo.gif" />
+    <Content Include="KDS.ico" />
+    <Content Include="Query\KDSSTOCKTAKESSC_SEQ-SERVER.txt" />
+    <Content Include="Query\DBLINK.txt" />
+    <Content Include="Query\KDSDETSTOCKTAKESSC_SEQ.txt" />
+    <Content Include="Query\KDSDETSTOCKTAKESSC.txt" />
+    <Content Include="Query\KDSHEADSTOCKTAKESSC.txt" />
+    <Content Include="Query\KDSSTOCKTAKESSC-SERVER.txt" />
+    <Content Include="Query\KDSSTOCKTAKESSC.txt" />
+    <Content Include="Query\KDSSTOCKTAKESSC_SEQ.txt" />
+    <Content Include="Query\SSC-StockTakeMenuInsert.txt" />
+    <Content Include="Resources\Add.png" />
+    <Content Include="Resources\Apply.png" />
+    <Content Include="Resources\Back.png" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\DisAdd.png" />
+    <Content Include="Resources\DisApply.png" />
+    <Content Include="Resources\DisClose.png" />
+    <Content Include="Resources\DisRemove.png" />
+    <Content Include="Resources\DisView.png" />
+    <Content Include="Resources\Notes.png" />
+    <Content Include="Resources\Remove.png" />
+<<<<<<< HEAD
+=======
+    <Content Include="Resources\save.png" />
+>>>>>>> 0b24b89ab34e29f4d57021b1b13d50f0d93bb931
+    <Content Include="Resources\valid.png" />
+    <Content Include="Resources\View.png" />
+    <Content Include="Version_History.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

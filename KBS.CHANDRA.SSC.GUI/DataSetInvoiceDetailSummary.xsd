@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetInvoiceDetailSummary" targetNamespace="http://tempuri.org/DataSetInvoiceDetailSummary.xsd" xmlns:mstns="http://tempuri.org/DataSetInvoiceDetailSummary.xsd" xmlns="http://tempuri.org/DataSetInvoiceDetailSummary.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetInvoiceDetailSummary" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetInvoiceDetailSummary" msprop:Generator_UserDSName="DataSetInvoiceDetailSummary">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTableInvoiceDetailSummary" msprop:Generator_TableClassName="DataTableInvoiceDetailSummaryDataTable" msprop:Generator_TableVarName="tableDataTableInvoiceDetailSummary" msprop:Generator_TablePropName="DataTableInvoiceDetailSummary" msprop:Generator_RowDeletingName="DataTableInvoiceDetailSummaryRowDeleting" msprop:Generator_RowChangingName="DataTableInvoiceDetailSummaryRowChanging" msprop:Generator_RowEvHandlerName="DataTableInvoiceDetailSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableInvoiceDetailSummaryRowDeleted" msprop:Generator_UserTableName="DataTableInvoiceDetailSummary" msprop:Generator_RowChangedName="DataTableInvoiceDetailSummaryRowChanged" msprop:Generator_RowEvArgName="DataTableInvoiceDetailSummaryRowChangeEvent" msprop:Generator_RowClassName="DataTableInvoiceDetailSummaryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="KETERANGAN" msprop:Generator_ColumnVarNameInTable="columnKETERANGAN" msprop:Generator_ColumnPropNameInRow="KETERANGAN" msprop:Generator_ColumnPropNameInTable="KETERANGANColumn" msprop:Generator_UserColumnName="KETERANGAN" type="xs:string" minOccurs="0" />
+              <xs:element name="BRAND" msprop:Generator_ColumnVarNameInTable="columnBRAND" msprop:Generator_ColumnPropNameInRow="BRAND" msprop:Generator_ColumnPropNameInTable="BRANDColumn" msprop:Generator_UserColumnName="BRAND" type="xs:string" minOccurs="0" />
+              <xs:element name="PENJUALAN" msprop:Generator_ColumnVarNameInTable="columnPENJUALAN" msprop:Generator_ColumnPropNameInRow="PENJUALAN" msprop:Generator_ColumnPropNameInTable="PENJUALANColumn" msprop:Generator_UserColumnName="PENJUALAN" type="xs:string" minOccurs="0" />
+              <xs:element name="MARGINPCT" msprop:Generator_ColumnVarNameInTable="columnMARGINPCT" msprop:Generator_ColumnPropNameInRow="MARGINPCT" msprop:Generator_ColumnPropNameInTable="MARGINPCTColumn" msprop:Generator_UserColumnName="MARGINPCT" type="xs:string" minOccurs="0" />
+              <xs:element name="MARGINRP" msprop:Generator_ColumnVarNameInTable="columnMARGINRP" msprop:Generator_ColumnPropNameInRow="MARGINRP" msprop:Generator_ColumnPropNameInTable="MARGINRPColumn" msprop:Generator_UserColumnName="MARGINRP" type="xs:string" minOccurs="0" />
+              <xs:element name="DISCPCT" msprop:Generator_ColumnVarNameInTable="columnDISCPCT" msprop:Generator_ColumnPropNameInRow="DISCPCT" msprop:Generator_ColumnPropNameInTable="DISCPCTColumn" msprop:Generator_UserColumnName="DISCPCT" type="xs:string" minOccurs="0" />
+              <xs:element name="DISCRP" msprop:Generator_ColumnVarNameInTable="columnDISCRP" msprop:Generator_ColumnPropNameInRow="DISCRP" msprop:Generator_ColumnPropNameInTable="DISCRPColumn" msprop:Generator_UserColumnName="DISCRP" type="xs:string" minOccurs="0" />
+              <xs:element name="TOTAL" msprop:Generator_ColumnVarNameInTable="columnTOTAL" msprop:Generator_ColumnPropNameInRow="TOTAL" msprop:Generator_ColumnPropNameInTable="TOTALColumn" msprop:Generator_UserColumnName="TOTAL" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
