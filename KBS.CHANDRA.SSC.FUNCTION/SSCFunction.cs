@@ -2715,7 +2715,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
         {
             try
             {
-                this.ConnectLocal();
+                this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "delete KDS_INTMIXDETPRO where PRMDCRE <= sysdate-100";

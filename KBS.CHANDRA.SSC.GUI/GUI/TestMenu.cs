@@ -4714,16 +4714,16 @@ namespace KBS.CHANDRA.SSC.GUI
                     logger.Error(ex.Message);
                 }
 
-                try
-                {
-                    function.DeleteOldUploadPromo();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error Occured",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    logger.Error(ex.Message);
-                }
+                //try
+                //{
+                //    function.DeleteOldUploadPromo();
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message, "Error Occured",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    logger.Error(ex.Message);
+                //}
 
 
                 foreach (var u in uploadPromoContainer) // Loop over the rows.
