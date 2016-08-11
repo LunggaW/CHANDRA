@@ -2706,6 +2706,38 @@ namespace KBS.CHANDRA.SSC.FUNCTION
             }
         }
 
+
+        /// <summary>
+        /// Deletes promo older than 3 months.
+        /// </summary>
+        /// <returns>System.String.</returns>
+        public string DeleteOldUploadPromo()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "delete KDS_INTMIXDETPRO where PRMDCRE <= sysdate-100";
+                cmd.CommandType = CommandType.Text;
+
+                logger.Debug(cmd.CommandText);
+
+                cmd.ExecuteNonQuery();
+
+                this.Close();
+                ErrorString = "Success";
+                return ErrorString;
+            }
+            catch (Exception e)
+            {
+                logger.Error("DeleteOldUploadPromo Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
         public int SearchForExistingTransactionByProfileID(String ProfileID)
         {
             try

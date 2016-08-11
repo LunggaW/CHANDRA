@@ -47,13 +47,13 @@ namespace KBS.CHANDRA.SSC.GUI
         private List<String> BrandCode = new List<String>();
         private List<String> BrandName = new List<String>();
         private Font fontMenuSalesStrip;
-        private  Timer timerIdle = new Timer();
+        private Timer timerIdle = new Timer();
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         //private int MinutesToLogout = Convert.ToInt32(ConfigurationManager.AppSettings["MinutesToLogout"]);
-        private  Item item = new Item();
+        private Item item = new Item();
         private MemoDiscountHeader memoHeader = new MemoDiscountHeader();
-        private  SSCFunction function = new SSCFunction();
-        private  Panel activePanel = new Panel();
+        private SSCFunction function = new SSCFunction();
+        private Panel activePanel = new Panel();
         private DataTable DTBrandInProfile = new DataTable();
         private DataTable DTStockTakeReport = new DataTable();
         private DataTable DTStockTakeUpload = new DataTable();
@@ -69,7 +69,7 @@ namespace KBS.CHANDRA.SSC.GUI
         private DataTable DTMultipleSalesInputCopy = new DataTable();
         private DataTable DTSalesInputSalesHistory = new DataTable();
         private DataTable DTStockDisplay = new DataTable();
-        private DataTable DTMemoDiscountHeader= new DataTable();
+        private DataTable DTMemoDiscountHeader = new DataTable();
         private DataTable DTMemoDiscountDetail = new DataTable();
         private DataTable DTUser = new DataTable();
         private DataTable DTMenuInProfile = new DataTable();
@@ -83,9 +83,9 @@ namespace KBS.CHANDRA.SSC.GUI
         private DataTable DTDetailIvoice = new DataTable();
         private DataTable DTFakturPajak = new DataTable();
         private DataTable DTInvoiceDetail = new DataTable();
-        
+
         private Item itemSalesHistory = new Item();
-        private Item itemSalesDisplay = new Item();        
+        private Item itemSalesDisplay = new Item();
         private decimal GrossAmount;
         private String ErrorString;
         private String StatusNota;
@@ -121,21 +121,6 @@ namespace KBS.CHANDRA.SSC.GUI
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
 
-            //try
-            //{
-            //    String ConnectionString = ConfigurationManager.AppSettings["ConnectionString"];
-            //    OracleConnection con = new OracleConnection();
-            //    con.ConnectionString = ConnectionString;
-            //    con.Open();
-            //    con.Close();
-            //}
-            //catch (OracleException ex)
-            //{
-            //    MessageBox.Show("Error Trying to connect to G.O.L.D Server", "Error Occured",
-            //          MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    logger.Error(ex.Message);
-            //    //this.Shown += new EventHandler(MyForm_CloseOnStart);
-            //}
 
             try
             {
@@ -202,7 +187,7 @@ namespace KBS.CHANDRA.SSC.GUI
             InvoiceParamPanel.Visible = false;
             panelReportFakturPajak.Visible = false;
             groupBoxPrintInvoice.Visible = false;
-            panelPrintInvoice.Visible = false;            
+            panelPrintInvoice.Visible = false;
             panelPrintPreview.Visible = false;
             panelSlipPembayaran.Visible = false;
             disableMenuStrip();
@@ -1611,7 +1596,9 @@ namespace KBS.CHANDRA.SSC.GUI
                         {
 
                             Decimal Price = Convert.ToDecimal(textBoxPrice.Text);
+                            logger.Trace("Price : " + Price);
                             Decimal Qty = Convert.ToDecimal(textBoxQuantitySalesInput.Text);
+                            logger.Trace("Qty : " + Qty);
                             //Decimal TotalDiscAmount = Convert.ToDecimal(textBoxDiscount.Text);
                             //Decimal Disc2 = Convert.ToDecimal(textBoxDiscount2.Text);
 
@@ -1629,6 +1616,7 @@ namespace KBS.CHANDRA.SSC.GUI
                             if (item.FixPrice != 0)
                             {
                                 NetAmount = item.FixPrice * Qty;
+                                
                             }
                             else
                             {
@@ -1641,14 +1629,27 @@ namespace KBS.CHANDRA.SSC.GUI
                                 {
                                     Decimal Price1, Price2, Price3 = 0;
                                     Price1 = (Price - (Price * item.Discount1) / 100);
+                                    logger.Trace("Price : " + Price);
+                                    logger.Trace("Discount1 : " + item.Discount1);
+                                    logger.Trace("Price 1 : " + Price1 );
                                     Price2 = (Price1 - (Price1 * item.Discount2) / 100);
+                                    logger.Trace("Discount2 : " + item.Discount2);
+                                    logger.Trace("Price 2 : " + Price2);
                                     Price3 = (Price2 - (Price2 * item.Discount3) / 100);
+                                    logger.Trace("Discount1 : " + item.Discount3);
+                                    logger.Trace("Price 3 : " + Price3);
                                     item.TotalDiscountAmount = Price - (Price3 - item.DiscountRP);
+                                    logger.Trace("TotalDiscountAmount : " + item.TotalDiscountAmount);
                                     NetAmount = (Price - item.TotalDiscountAmount) * Qty;
+                                    logger.Trace("Qty : " + Qty);
+                                    logger.Trace("netAmount : " + item.TotalDiscountAmount);
                                 }
                                 else
                                 {
                                     NetAmount = (Price - item.TotalDiscountAmount) * Qty;
+                                    logger.Trace("Price : " + Price);
+                                    logger.Trace("netAmount : " + item.TotalDiscountAmount);
+                                    logger.Trace("Qty : " + Qty);
                                 }
 
                             }
@@ -3492,6 +3493,8 @@ namespace KBS.CHANDRA.SSC.GUI
 
                     item.FixPrice = string.IsNullOrWhiteSpace(row["FIXPRICE"].ToString()) ? 0 : decimal.Parse(row["FIXPRICE"].ToString());
 
+                    
+                    
 
                     textBoxArticle.Text = (string)row["ARTICLE"];
                     textBoxColor.Text = row["COLOR"].ToString();
@@ -3509,6 +3512,13 @@ namespace KBS.CHANDRA.SSC.GUI
 
                     textBoxNetAmount.Text = item.FixPrice != 0 ? string.Format("{0:0,0}", (item.FixPrice) * decimal.Parse(textBoxQuantitySalesInput.Text)) : string.Format("{0:0,0}", (item.Price - item.TotalDiscountAmount) * decimal.Parse(textBoxQuantitySalesInput.Text));
 
+
+                    logger.Trace("Price = " + item.Price);
+                    logger.Trace("TotalDiscountAmount = " + item.TotalDiscountAmount);
+                    logger.Trace("NetAmount = " +
+                                 (item.Price - item.TotalDiscountAmount)*decimal.Parse(textBoxQuantitySalesInput.Text));
+                    logger.Trace("Fix Price = " + item.FixPrice);
+                    logger.Trace("Qty = " + textBoxQuantitySalesInput.Text);
 
                 }
 
@@ -4555,6 +4565,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         resetLogin();
                         break;
                     case 1:
+                        //Successfull login
                         GlobalVar.GlobalVarUserID = user.UserID;
                         GlobalVar.GlobalVarPassword = user.Password;
                         GlobalVar.GlobalVarProfileID = user.ProfileID;
@@ -4584,12 +4595,6 @@ namespace KBS.CHANDRA.SSC.GUI
                             activePanel.Visible = true;
                         }
 
-
-
-                        //UpdateData();
-                        //RefreshBrandCodeSalesHistory();
-
-
                         break;
                     case 2:
                         MessageBox.Show("User dalam keadaan Frozen, tolong hubungi admin", "User dalam keadaan frozen",
@@ -4615,6 +4620,7 @@ namespace KBS.CHANDRA.SSC.GUI
         #endregion
 
         #region Upload Promo
+
         private void buttonSearchUploadPromo_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxSeqNumUploadPromo.Text))
@@ -4639,6 +4645,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 try
                 {
+                    //Upload DT based on the data from textbox and status
                     DTUploadPromo = function.SelectUploadPromoBySeqNumberAndStatus(textBoxSeqNumUploadPromo.Text, AllData);
                 }
                 catch (Exception ex)
@@ -4707,6 +4714,16 @@ namespace KBS.CHANDRA.SSC.GUI
                     logger.Error(ex.Message);
                 }
 
+                //try
+                //{
+                //    function.DeleteOldUploadPromo();
+                //}
+                //catch (Exception ex)
+                //{
+                //    MessageBox.Show(ex.Message, "Error Occured",
+                //    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    logger.Error(ex.Message);
+                //}
 
 
                 foreach (var u in uploadPromoContainer) // Loop over the rows.
@@ -4814,86 +4831,6 @@ namespace KBS.CHANDRA.SSC.GUI
             this.Close();
         }
 
-        //private void syncData()
-        //{
-        //    String MV_ARTICLESBatchFileLocation = ConfigurationManager.AppSettings["MV_ARTICLES_BATCHFILE"];
-        //    String V_BRANDBatchFileLocation = ConfigurationManager.AppSettings["V_BRAND_BATCHFILE"];
-        //    String V_SITEBatchFileLocation = ConfigurationManager.AppSettings["V_SITE_BATCHFILE"];
-
-        //    string MV_ARTICLES_HASH = ComputeHash(ConfigurationManager.AppSettings["SSCFileLocation"] + ConfigurationManager.AppSettings["MV_ARTICLES_LST"]);
-        //    string V_BRAND_HASH = ComputeHash(ConfigurationManager.AppSettings["SSCFileLocation"] + ConfigurationManager.AppSettings["V_BRAND_LST"]);
-        //    string V_SITE_HASH = ComputeHash(ConfigurationManager.AppSettings["SSCFileLocation"]+ConfigurationManager.AppSettings["V_SITE_LST"]);
-
-        //    if (!function.CheckDataMV_ARTICLES(MV_ARTICLES_HASH))
-        //    {
-        //        try
-        //        {
-        //            logger.Debug("Hash is different, running MV_ARTICLES BATCHFILE");
-        //            System.Diagnostics.Process.Start(MV_ARTICLESBatchFileLocation);   
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, "Error",
-        //                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            logger.Error(ex.Message);
-        //        }
-
-        //    }
-
-        //    if (!function.CheckDataV_BRAND(V_BRAND_HASH))
-        //    {
-        //        try
-        //        {
-        //            logger.Debug("Hash is different, running V_BRAND BATCHFILE");
-        //            System.Diagnostics.Process.Start(V_BRANDBatchFileLocation);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, "Error",
-        //                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            logger.Error(ex.Message);
-        //        }
-        //    }
-
-        //    if (!function.CheckDataV_SITE(V_SITE_HASH))
-        //    {
-        //        try
-        //        {
-        //            logger.Debug("Hash is different, running V_SITE BATCHFILE");
-        //            System.Diagnostics.Process.Start(V_SITEBatchFileLocation);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message, "Error",
-        //                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            logger.Error(ex.Message);
-        //        }
-        //    }
-
-
-        //}
-
-        string ComputeHash(string filename)
-        {
-            try
-            {
-                using (var md5 = MD5.Create())
-                {
-                    using (var stream = File.OpenRead(filename))
-                    {
-                        return Convert.ToBase64String(md5.ComputeHash(stream));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error",
-                             MessageBoxButtons.OK, MessageBoxIcon.Error);
-                logger.Error(ex.Message);
-                return null;
-            }
-
-        }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -4957,6 +4894,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
 
         #region Generate Label STCK
+        
         private void buttonProcessLabelSTCK_Click(object sender, EventArgs e)
         {
             FilePath = ConfigurationManager.AppSettings["DefaultPrintLabelFilePath"];
@@ -5802,7 +5740,7 @@ namespace KBS.CHANDRA.SSC.GUI
             activePanel.Visible = true;
             InvHNewKodeTxt.Text = "";
             InvHNewKodeTxt.ReadOnly = false;
-            
+
             PKPBox.Enabled = true;
             PBKPBox.Enabled = true;
             OtherHeaderPanel.Visible = false;
@@ -5981,7 +5919,7 @@ namespace KBS.CHANDRA.SSC.GUI
             activePanel = panelProsesDetail;
             activePanel.Visible = true;
             Loadcombotype("Detail");
-           
+
             //DisplayInvDetailEx(IDKodeTxt.Text);            
             DetailKodeTxt.Text = InvHNewKodeTxt.Text;
             DetailUsahaTxt.Text = PKPBox.Text;
@@ -5991,7 +5929,7 @@ namespace KBS.CHANDRA.SSC.GUI
             InvoiceBox.Enabled = true;
             PanelDetailParamInvoice.Visible = false;
             string abc = InvoiceBox.Text;
-           
+
             TotalIDtxt.Text = "0";
             TaxIDtxt.Text = "0";
             TotalTaxIDtxt.Text = "0";
@@ -6026,7 +5964,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
         private void CancelSaveDetailBtn_Click(object sender, EventArgs e)
         {
-           
+
             activePanel.Visible = false;
             activePanel = panelPaymentProcessNew;
             activePanel.Visible = true;
@@ -6102,7 +6040,7 @@ namespace KBS.CHANDRA.SSC.GUI
             HInvdataGridView.Columns["KODE"].MinimumWidth = 150;
             HInvdataGridView.Columns["PEMBELI"].MinimumWidth = 175;
             HInvdataGridView.Columns["PENGUSAHA"].MinimumWidth = 175;
-            HInvdataGridView.Columns["COMMENT HEADER"].MinimumWidth =190;
+            HInvdataGridView.Columns["COMMENT HEADER"].MinimumWidth = 190;
             HInvdataGridView.Columns["COMMENT FOOTER"].MinimumWidth = 190;
             DataGridViewLinkColumn EditLink = new DataGridViewLinkColumn();
             EditLink.UseColumnTextForLinkValue = true;
@@ -6203,7 +6141,7 @@ namespace KBS.CHANDRA.SSC.GUI
         }
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            
+
             String DataIDH = "";
             if (InvHNewKodeTxt.Text != "")
             {
@@ -6306,8 +6244,8 @@ namespace KBS.CHANDRA.SSC.GUI
             InvHNewKodeTxt.Text = KodeId.KODE;
             PKPBox.SelectedValue = KodeId.IDPENGUSAHA;
             PBKPBox.SelectedValue = KodeId.IDPEMBELI;
-            IStartDate.Text = KodeId.STARTDATE ;
-            IEndDate.Text = KodeId.ENDDATE ;
+            IStartDate.Text = KodeId.STARTDATE;
+            IEndDate.Text = KodeId.ENDDATE;
             FComment.Text = KodeId.FComment;
             HComment.Text = KodeId.HComment;
             InvHeader KodeIdDetail = new InvHeader();
@@ -6347,8 +6285,8 @@ namespace KBS.CHANDRA.SSC.GUI
                 TFacTaxTxt.Text = "";
                 TFacNTaxTxt.Text = "";
             }
-           // InvHNewKodeTxt.ReadOnly = true;
-            
+            // InvHNewKodeTxt.ReadOnly = true;
+
             PKPBox.Enabled = false;
             PBKPBox.Enabled = false;
             DetailBtn.Visible = true;
@@ -6471,16 +6409,16 @@ namespace KBS.CHANDRA.SSC.GUI
                 ErrorString = function.UpdateArchiveData(InvoiceBox.SelectedValue.ToString(), "1");
 
                 ErrorString = function.InsertInvDetail(IdHeaderDetailLbl.Text, InvoiceBox.SelectedValue.ToString(), Dcomment.Text, "Insert", DetailUsahaTxt.Text);
-                
+
                 MessageBox.Show("Insert Invoice Detail: " + InvHNewKodeTxt.Text, "Success",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 String SKU = InvoiceBox.SelectedValue.ToString();
                 DataDetailRefresh(SKU);
                 //DisplayInvDetailEx(InvoiceBox.SelectedValue.ToString());
                 RefreshDataDetail();
-           
-                 DetailSummaryBtn.Visible = true;
-                 DetailRptBtn.Visible = true;
+
+                DetailSummaryBtn.Visible = true;
+                DetailRptBtn.Visible = true;
             }
             catch (Exception ex)
             {
@@ -6488,8 +6426,8 @@ namespace KBS.CHANDRA.SSC.GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 logger.Error(ex.Message);
             }
-           
-         
+
+
         }
 
         private void DataDetailRefresh(String SKU)
@@ -6506,7 +6444,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 logger.Error(ex.Message);
             }
             IDDetailTxt.Text = DetailData.IDD;
-           
+
             DisplayInvDetailEx(DetailData.IDD);
             DetailSaveBtn.Visible = false;
             InvoiceBox.Enabled = false;
@@ -6681,7 +6619,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 DetailSaveBtn.Visible = false;
                 PanelDetailParamInvoice.Visible = true;
                 DataDetailRefresh(SKUID);
-              
+
                 DparamBox.Enabled = true;
                 CancelBtnPD.Visible = false;
                 DExtSaveParamBtn.Visible = true;
@@ -7016,7 +6954,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         logger.Error(ex.Message);
                     }
                     SearchRefreshReport();
-                  
+
                 }
             }
         }
@@ -7037,7 +6975,7 @@ namespace KBS.CHANDRA.SSC.GUI
             MessageBox.Show("Update Invoice Detail: " + InvHNewKodeTxt.Text, "Success",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
             //DisplayInvDetailEx(InvoiceBox.SelectedValue.ToString());
-            
+
             activePanel.Visible = false;
             activePanel = panelPaymentProcessNew;
             activePanel.Visible = true;
@@ -7095,8 +7033,8 @@ namespace KBS.CHANDRA.SSC.GUI
             DValueParamTxt.Text = "";
         }
 
-        
-            
+
+
         private void RefreshDataDetail()
         {
             TotalInvoice Data = new TotalInvoice();
@@ -7133,8 +7071,8 @@ namespace KBS.CHANDRA.SSC.GUI
         {
             try
             {
-                
-                ErrorString = function.MoveInvHeader(RunTxt.Text);               
+
+                ErrorString = function.MoveInvHeader(RunTxt.Text);
 
                 MessageBox.Show("Move History: " + DparamBox.Text, ErrorString,
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -7219,7 +7157,7 @@ namespace KBS.CHANDRA.SSC.GUI
             ShowPanelReportPreview();
         }
 
-      
+
 
 
 
@@ -7287,7 +7225,7 @@ namespace KBS.CHANDRA.SSC.GUI
             FPSearch.EndDate = ToDateFakturPajak.Value;
             FPSearch.InvoiceNo = textBoxInvoiceNo.Text;
 
-           
+
             DTFakturPajak = function.SelectFakturPajakConfirm(FPSearch, checkBoxInvoiceIncludeHistory.Checked);
 
             dataGridViewFakturPajak.DataSource = DTFakturPajak;
@@ -7320,7 +7258,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                     DTInvoiceDetail = InvoiceIsHistory ? function.selectTrxInvoiceByKODEHistory(row.Cells[0].Value.ToString()) : function.selectTrxInvoiceByKODE(row.Cells[0].Value.ToString());
 
-                    
+
 
                     GlobalVar.GlobalVarKodeInvoice = row.Cells[0].Value.ToString();
                 }
@@ -7559,7 +7497,7 @@ namespace KBS.CHANDRA.SSC.GUI
             try
             {
                 FP = InvoiceIsHistory ? function.SelectFakturPajakByCodeHistorical(GlobalVar.GlobalVarKodeInvoice) : function.SelectFakturPajakByCode(GlobalVar.GlobalVarKodeInvoice);
-                
+
             }
             catch (Exception ex)
             {
@@ -7584,7 +7522,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
 
                 dt = new DataTable();
-                dt = InvoiceIsHistory ? function.selectCommentFakturPajakByKODEHistorical(FP.KODE) : function.selectCommentFakturPajakByKODE(FP.KODE);                
+                dt = InvoiceIsHistory ? function.selectCommentFakturPajakByKODEHistorical(FP.KODE) : function.selectCommentFakturPajakByKODE(FP.KODE);
                 rds = new ReportDataSource("DataSetCommentHeader", dt);
                 reportViewerFakturPajak.LocalReport.DataSources.Add(rds);
 
@@ -7598,7 +7536,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 InvHeader invH = new InvHeader();
 
                 invH = InvoiceIsHistory ? function.getIdKodeHistorical(FP.KODE) : function.getIdKode(FP.KODE);
-                
+
 
 
                 //Path  
@@ -7722,7 +7660,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 decimal? TotalExpenseTrxInvoice;
 
                 TotalExpenseTrxInvoice = InvoiceIsHistory ? function.SumExpenseFakturPajakHistorical(invH.IDH) : function.SumExpenseFakturPajak(invH.IDH);
-                
+
 
                 reportViewerFakturPajak.LocalReport.ReportPath = TotalExpenseTrxInvoice < 500000 ? "Report/InvoiceLessThan500k.rdlc" : "Report/InvoiceGreaterThan500k.rdlc";
 
@@ -7730,7 +7668,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 //Parameter
 
-                
+
                 SupplierPembeli Supplier = new SupplierPembeli();
                 ExpenseFakturPajak expenseFP = new ExpenseFakturPajak();
 
@@ -7740,7 +7678,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 Supplier = function.SelectSupplierByID(FP.IDPENGUSAHA, invH.IDH);
 
-                
+
 
 
 
@@ -7772,14 +7710,14 @@ namespace KBS.CHANDRA.SSC.GUI
                     "PDF", null, out mimeType, out encoding, out filenameExtension,
                     out streamids, out warnings);
 
-                
+
 
                 using (FileStream fs = new FileStream(Filename, FileMode.Create))
                 {
                     fs.Write(bytes, 0, bytes.Length);
                 }
                 System.Diagnostics.Process.Start(@"" + Filename + "");
-//                System.Diagnostics.Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)Filename);
+                //                System.Diagnostics.Process.Start(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)Filename);
                 MessageBox.Show("Success Me-generate report", "Success Generating Report",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -7847,7 +7785,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 expenseFP = InvoiceIsHistory ? function.selectExpenseFakturPajakTotalTerbilangByKODEPembayaranHistorical(invH.IDH) : function.selectExpenseFakturPajakTotalTerbilangByKODEPembayaran(invH.IDH);
 
 
-                
+
                 Supplier = InvoiceIsHistory ? function.HistorySelectSupplierByID(FP.IDPENGUSAHA, invH.IDH) : function.SelectSupplierByID(FP.IDPENGUSAHA, invH.IDH);
 
 
@@ -7908,7 +7846,7 @@ namespace KBS.CHANDRA.SSC.GUI
             try
             {
                 FP = InvoiceIsHistory ? function.SelectFakturPajakByCodeHistorical(GlobalVar.GlobalVarKodeInvoice) : function.SelectFakturPajakByCode(GlobalVar.GlobalVarKodeInvoice);
-                
+
             }
             catch (Exception ex)
             {
@@ -8178,7 +8116,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 Pembeli = function.SelectPembeliByID(FP.IDPEMBELI);
                 Penjual = InvoiceIsHistory ? function.HistorySelectSupplierByID(FP.IDPENGUSAHA, invH.IDH) : function.SelectSupplierByID(FP.IDPENGUSAHA, invH.IDH);
-                
+
 
                 ReportParameter[] rptParams = new ReportParameter[]
                     {
@@ -8243,7 +8181,7 @@ namespace KBS.CHANDRA.SSC.GUI
             try
             {
                 FP = InvoiceIsHistory ? function.SelectFakturPajakByCodeHistorical(GlobalVar.GlobalVarKodeInvoice) : function.SelectFakturPajakByCode(GlobalVar.GlobalVarKodeInvoice);
-                
+
             }
             catch (Exception ex)
             {
@@ -8254,7 +8192,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
             InvDetail invDet = new InvDetail();
             invDet = InvoiceIsHistory ? function.getIdInvoiceDetailHistorical(InvoiceNo) : function.getIdInvoiceDetail(InvoiceNo);
-            
+
 
 
             try
@@ -8289,7 +8227,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 Decimal? SubTotalWithoutExpense = function.SumInvoiceDetailDetail(invDet.SUPPLIER, InvoiceNo);
                 if (SubTotalWithoutExpense == null)
                 {
-                    SubTotalWithoutExpense = InvoiceIsHistory ? function.SumExpenseTrxTotalInvoiceHistorical(invDet.IDD) : function.SumExpenseTrxTotalInvoice(invDet.IDD); 
+                    SubTotalWithoutExpense = InvoiceIsHistory ? function.SumExpenseTrxTotalInvoiceHistorical(invDet.IDD) : function.SumExpenseTrxTotalInvoice(invDet.IDD);
                 }
                 Decimal? TotalExpense;
 
@@ -8303,7 +8241,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 Decimal? SubTotal = SubTotalWithoutExpense / C;
 
-                Decimal? Tax = SubTotalWithoutExpense - SubTotal;                               
+                Decimal? Tax = SubTotalWithoutExpense - SubTotal;
 
                 Decimal? TotalAftTax = SubTotalWithoutExpense;
 
@@ -8365,7 +8303,7 @@ namespace KBS.CHANDRA.SSC.GUI
                     fs.Write(bytes, 0, bytes.Length);
                 }
 
-                System.Diagnostics.Process.Start(@""+Filename+"");
+                System.Diagnostics.Process.Start(@"" + Filename + "");
                 MessageBox.Show("Success Me-generate report", "Success Generating Report",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -8434,7 +8372,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 {
                     SubTotalWithoutExpense = InvoiceIsHistory ? function.SumExpenseTrxTotalInvoiceHistorical(invDet.IDD) : function.SumExpenseTrxTotalInvoice(invDet.IDD);
                 }
-                
+
                 Decimal? TotalExpense;
 
                 TotalExpense = InvoiceIsHistory ? function.SumExpenseTrxInvoiceHistorical(invDet.IDD) : function.SumExpenseTrxInvoice(invDet.IDD);
@@ -8537,7 +8475,7 @@ namespace KBS.CHANDRA.SSC.GUI
             string fileName = saveFileDialogPembayaran.FileName;
             PrintBiayaInvoice(fileName);
             HidePanelPrintInvoice();
-        }  
+        }
 
         private void saveFileDialogBiaya_FileOk(object sender, CancelEventArgs e)
         {
@@ -8548,9 +8486,9 @@ namespace KBS.CHANDRA.SSC.GUI
 
         private void saveFileDialogBCATunai_FileOk(object sender, CancelEventArgs e)
         {
-                string fileName = saveFileDialogBCATunai.FileName;
-                PrintBCABuktiSetoran(fileName);
-            
+            string fileName = saveFileDialogBCATunai.FileName;
+            PrintBCABuktiSetoran(fileName);
+
             HidePanelPrintInvoice();
         }
 
@@ -8769,7 +8707,7 @@ namespace KBS.CHANDRA.SSC.GUI
             String Exclude = RemoveSpecialCharacters(DateTime.Now.ToString());
             path = path + "\\ReportSummary" + Exclude + ".pdf";
             PrintInvoiceDetailSummary(path);
-           // saveFileDialogInvoiceDetailSummary.ShowDialog();
+            // saveFileDialogInvoiceDetailSummary.ShowDialog();
         }
 
         private void DetailRptBtn_Click(object sender, EventArgs e)
@@ -8788,18 +8726,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
         }
 
-        public static string RemoveSpecialCharacters(string str)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (char c in str)
-            {
-                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
-                {
-                    sb.Append(c);
-                }
-            }
-            return sb.ToString();
-        }
+       
 
 
         #region SlipPembayaran
@@ -8841,15 +8768,15 @@ namespace KBS.CHANDRA.SSC.GUI
                 
                 logger.Error(ex.Message);
             }
-            
-        }
-       
 
-        
-         
+        }
+
+
+
+
         private void printSlipToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RefreshSlipHeader();            
+            RefreshSlipHeader();
         }
         private void RefreshSlipHeader()
         {
@@ -8921,7 +8848,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 {
                     SaveSlipBtn.Visible = false;
                     UpdateSlipBtn.Visible = true;
-                    panelSlipRekening.Visible = true;                    
+                    panelSlipRekening.Visible = true;
 
                 }
             }
@@ -8959,61 +8886,61 @@ namespace KBS.CHANDRA.SSC.GUI
                 DescPayTxt.Focus();
             }
         }
-       
+
 
         private void dataGridInvoice_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             TotalInvoiceTxt.Text = "0";
             if (Convert.ToBoolean(dataGridInvoice["SELECTED", e.RowIndex].Value) == true)
+            {
+                dataGridInvoice["SELECTED", e.RowIndex].Value = false;
+                String NoKode = "''";
+                List<DataGridViewRow> CheckedData = new List<DataGridViewRow>();
+                foreach (DataGridViewRow row in dataGridInvoice.Rows)
                 {
-                    dataGridInvoice["SELECTED", e.RowIndex].Value = false;
-                    String NoKode = "''";
-                    List<DataGridViewRow> CheckedData = new List<DataGridViewRow>();
-                    foreach (DataGridViewRow row in dataGridInvoice.Rows)
+
+                    if (Convert.ToBoolean(row.Cells["SELECTED"].Value) == true)
                     {
-                       
-                        if (Convert.ToBoolean(row.Cells["SELECTED"].Value) == true)
-                        {
-                            CheckedData.Add(row);
+                        CheckedData.Add(row);
 
-                            NoKode = NoKode + ", '" + row.Cells["KODE"].Value.ToString() + "'";
-                            UpdateTotal(NoKode);
+                        NoKode = NoKode + ", '" + row.Cells["KODE"].Value.ToString() + "'";
+                        UpdateTotal(NoKode);
 
-                        }
                     }
                 }
-                else
-                {
-                    dataGridInvoice["SELECTED", e.RowIndex].Value = true;                    
+            }
+            else
+            {
+                dataGridInvoice["SELECTED", e.RowIndex].Value = true;
                 //Generate Total
-                    String NoKode = "''";
-                    List<DataGridViewRow> CheckedData = new List<DataGridViewRow>();
-                    foreach (DataGridViewRow row in dataGridInvoice.Rows)
+                String NoKode = "''";
+                List<DataGridViewRow> CheckedData = new List<DataGridViewRow>();
+                foreach (DataGridViewRow row in dataGridInvoice.Rows)
+                {
+
+                    if (Convert.ToBoolean(row.Cells["SELECTED"].Value) == true)
                     {
-                       
-                        if (Convert.ToBoolean(row.Cells["SELECTED"].Value) == true)
-                        {
-                            CheckedData.Add(row);
-                            
-                            NoKode = NoKode + ", '" + row.Cells["KODE"].Value.ToString() + "'";
-                            UpdateTotal(NoKode);           
-                            
-                        }
+                        CheckedData.Add(row);
+
+                        NoKode = NoKode + ", '" + row.Cells["KODE"].Value.ToString() + "'";
+                        UpdateTotal(NoKode);
+
                     }
-                //End Generate 
                 }
+                //End Generate 
+            }
         }
         private void UpdateTotal(String Kode)
         {
-            reportViewerFakturPajak.Visible = false;            
-            
+            reportViewerFakturPajak.Visible = false;
+
             InvHeader invH = new InvHeader();
 
             try
             {
                 invH = function.getIdKodeSlip(Kode);
-                
+
             }
             catch (Exception ex)
             {
@@ -9043,7 +8970,7 @@ namespace KBS.CHANDRA.SSC.GUI
         private void SaveMasterBayar(String Status)
         {
             String Result = "";
-            FakturPajakSearch FPSearch = new FakturPajakSearch();            
+            FakturPajakSearch FPSearch = new FakturPajakSearch();
             FPSearch.IDPEMBELI = PembeliBox.SelectedValue.ToString();
             FPSearch.IDPENGUSAHA = PengusahaBox.SelectedValue.ToString();
             FPSearch.StartDate = StartSlipDate.Value;
@@ -9082,14 +9009,14 @@ namespace KBS.CHANDRA.SSC.GUI
                     }
                     Result = function.UpdateFakturInvoicePembayaran(NoPembayaranTxt.Text, NoKode);
                 }
-                
-             
+
+
                 LastValueTxt.Text = TotalInvoiceSaveTxt.Text;
                 //Update Flag Faktur
                 MessageBox.Show("Data Has Been Update", "Success", MessageBoxButtons.OK);
                 //Insert Data Rekening
                 SupplierPembeli Pembeli = new SupplierPembeli();
-                Pembeli = function.SelectPembeliByID(PembeliBox.SelectedValue.ToString());                
+                Pembeli = function.SelectPembeliByID(PembeliBox.SelectedValue.ToString());
                 AdPengirimTxt.Text = Pembeli.Address;
                 NPWPPengirimTxt.Text = Pembeli.NPWP;
                 KrmBox.Text = Pembeli.CompanyName;
@@ -9097,9 +9024,9 @@ namespace KBS.CHANDRA.SSC.GUI
                 DTParameterType = function.SelectDataPenerimaSlip(PengusahaBox.SelectedValue.ToString());
                 RekTrmBox.DataSource = DTParameterType;
                 RekTrmBox.DisplayMember = "NoRek";
-                RekTrmBox.ValueMember = "NoRek";     
+                RekTrmBox.ValueMember = "NoRek";
                 RefreshDataRekening();
-               
+
 
             }
             catch (Exception ex)
@@ -9136,50 +9063,50 @@ namespace KBS.CHANDRA.SSC.GUI
         }
         private void ConfirmSlipBtn_Click(object sender, EventArgs e)
         {
-            
-           try
+
+            try
+            {
+                FakturPajakSearch FPSearch = new FakturPajakSearch();
+                FPSearch.No = NoPembayaranTxt.Text;
+                if (ManualRek.Checked != true)
                 {
-                    FakturPajakSearch FPSearch = new FakturPajakSearch();
-                    FPSearch.No = NoPembayaranTxt.Text;
-                    if (ManualRek.Checked != true )
-                    {
-                        FPSearch.STATUS = "0";
-                        FPSearch.NoRekPenerima = RekTrmBox.SelectedValue.ToString();
-                    }
-                    else
-                    {
-                        FPSearch.STATUS = "1";
-                        FPSearch.NoRekPenerima = RekManual.Text;
-                    }
-                    FPSearch.Pengirim = KrmBox.Text;
-                    FPSearch.NPWP = NPWPPengirimTxt.Text;
-                    FPSearch.AdPengirim = AdPengirimTxt.Text;
-                   
-                    FPSearch.ANPenerima = ANPenerimaTxt.Text;
-                    FPSearch.BankPenerima = BankPenerimaTxt.Text;
-                    FPSearch.AdPenerima = AdPenerimaTxt.Text;
-                    FPSearch.Penerima = CompanyTxt.Text;
-
-                    String Result = function.InsertInvoicePembayaran(FPSearch, "Update");
-
-                    MessageBox.Show("Data Has Been Confirm", "Success", MessageBoxButtons.OK);
-                    GlobalVar.GlobalVarKodeInvoice = NoPembayaranTxt.Text;
-                    SaveMasterBayar("Update Data");
-                    RefreshSlipHeader();
-                    panelPrintSlip.Visible = true;
-
-
-
-
+                    FPSearch.STATUS = "0";
+                    FPSearch.NoRekPenerima = RekTrmBox.SelectedValue.ToString();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Error Occured",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    logger.Error(ex.Message);
+                    FPSearch.STATUS = "1";
+                    FPSearch.NoRekPenerima = RekManual.Text;
                 }
-            
-          
+                FPSearch.Pengirim = KrmBox.Text;
+                FPSearch.NPWP = NPWPPengirimTxt.Text;
+                FPSearch.AdPengirim = AdPengirimTxt.Text;
+
+                FPSearch.ANPenerima = ANPenerimaTxt.Text;
+                FPSearch.BankPenerima = BankPenerimaTxt.Text;
+                FPSearch.AdPenerima = AdPenerimaTxt.Text;
+                FPSearch.Penerima = CompanyTxt.Text;
+
+                String Result = function.InsertInvoicePembayaran(FPSearch, "Update");
+
+                MessageBox.Show("Data Has Been Confirm", "Success", MessageBoxButtons.OK);
+                GlobalVar.GlobalVarKodeInvoice = NoPembayaranTxt.Text;
+                SaveMasterBayar("Update Data");
+                RefreshSlipHeader();
+                panelPrintSlip.Visible = true;
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Occured",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex.Message);
+            }
+
+
         }
 
         private void BackSlipBtn_Click(object sender, EventArgs e)
@@ -9195,7 +9122,7 @@ namespace KBS.CHANDRA.SSC.GUI
             {
                 RefreshSlipHeader();
             }
-            
+
         }
 
         private void UpdateSlipBtn_Click(object sender, EventArgs e)
@@ -9213,100 +9140,101 @@ namespace KBS.CHANDRA.SSC.GUI
             //}
             //else
             //{
-                if (dataGridSlip.SelectedRows.Count == 0)
-                {
-                    MessageBox.Show("Tidak ada row yang terpilih, tolong pilih salah satu row",
-                        "Tidak ada row yang terpilih",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (dataGridSlip.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Tidak ada row yang terpilih, tolong pilih salah satu row",
+                    "Tidak ada row yang terpilih",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                }
-                else
+            }
+            else
+            {
+
+                FakturPajakSearch FPSearch = new FakturPajakSearch();
+                FPSearch.StartDate = StartSlipDate.Value;
+                FPSearch.EndDate = EndSlipDate.Value;
+                ManualRek.Checked = false;
+                foreach (DataGridViewRow row in this.dataGridSlip.SelectedRows)
                 {
-                   
-                    FakturPajakSearch FPSearch = new FakturPajakSearch();
-                    FPSearch.StartDate = StartSlipDate.Value;
-                    FPSearch.EndDate = EndSlipDate.Value;
-                    ManualRek.Checked = false;
-                    foreach (DataGridViewRow row in this.dataGridSlip.SelectedRows)
+                    DescPayTxt.Text = row.Cells["DESCRIPTION"].Value.ToString();
+                    NoPembayaranTxt.Text = row.Cells["ID"].Value.ToString();
+                    GlobalVar.GlobalVarKodeInvoice = row.Cells["ID"].Value.ToString();
+                    TotalInvoiceTxt.Text = Decimal.Parse(row.Cells["TOTAL"].Value.ToString()).ToString("N");
+                    TotalInvoiceSaveTxt.Text = row.Cells["TOTAL"].Value.ToString();
+                    LastValueTxt.Text = row.Cells["TOTAL"].Value.ToString();
+                    FPSearch.IDPEMBELI = row.Cells["IDPEMBELI"].Value.ToString();
+                    FPSearch.IDPENGUSAHA = row.Cells["IDPENGUSAHA"].Value.ToString();
+                    PembeliBox.SelectedValue = row.Cells["IDPEMBELI"].Value.ToString();
+                    PengusahaBox.SelectedValue = row.Cells["IDPENGUSAHA"].Value.ToString();
+                    string FlagManual = row.Cells["MANUAL"].Value.ToString();
+
+                    if (FlagManual == "1")
                     {
-                        DescPayTxt.Text = row.Cells["DESCRIPTION"].Value.ToString();
-                        NoPembayaranTxt.Text = row.Cells["ID"].Value.ToString();
-                        GlobalVar.GlobalVarKodeInvoice = row.Cells["ID"].Value.ToString();
-                        TotalInvoiceTxt.Text = Decimal.Parse(row.Cells["TOTAL"].Value.ToString()).ToString("N");
-                        TotalInvoiceSaveTxt.Text = row.Cells["TOTAL"].Value.ToString();
-                        LastValueTxt.Text = row.Cells["TOTAL"].Value.ToString();
-                        FPSearch.IDPEMBELI = row.Cells["IDPEMBELI"].Value.ToString();
-                        FPSearch.IDPENGUSAHA = row.Cells["IDPENGUSAHA"].Value.ToString();
-                        PembeliBox.SelectedValue = row.Cells["IDPEMBELI"].Value.ToString();
-                        PengusahaBox.SelectedValue = row.Cells["IDPENGUSAHA"].Value.ToString();
-                        string FlagManual = row.Cells["MANUAL"].Value.ToString();
-                        if (FlagManual == "1")
-                        {
-                            ManualRek.Checked = true;
+                        ManualRek.Checked = true;
 
-                            SupplierPembeli Penjual = new SupplierPembeli();
-                            Penjual = function.SelectDataManualPenerimaDetailSlip(GlobalVar.GlobalVarKodeInvoice);
+                        SupplierPembeli Penjual = new SupplierPembeli();
+                        Penjual = function.SelectDataManualPenerimaDetailSlip(GlobalVar.GlobalVarKodeInvoice);
 
-                            ANPenerimaTxt.Text = Penjual.AN;
-                            BankPenerimaTxt.Text = Penjual.Bank;
-                            AdPenerimaTxt.Text = Penjual.Address;
-                            CompanyTxt.Text = Penjual.CompanyName;
-                            RekManual.Text = Penjual.NoRek;
+                        ANPenerimaTxt.Text = Penjual.AN;
+                        BankPenerimaTxt.Text = Penjual.Bank;
+                        AdPenerimaTxt.Text = Penjual.Address;
+                        CompanyTxt.Text = Penjual.CompanyName;
+                        RekManual.Text = Penjual.NoRek;
 
-                        }
-                        else
-                        {
-
-                            DTParameterType = function.SelectDataPenerimaSlip(PengusahaBox.SelectedValue.ToString());
-                            RekTrmBox.DataSource = DTParameterType;
-                            RekTrmBox.DisplayMember = "NoRek";
-                            RekTrmBox.ValueMember = "NoRek";
-                            RefreshDataRekening();
-                        }
                     }
-                    SlipPanelSetting("Edit");
-                    panelSlipRekening.Visible = true;
-                  
-
-
-                    DTFakturPajak = function.SelectInvoiceSlip(FPSearch, "Edit");
-                    dataGridInvoice.Columns.Clear();
-                    dataGridInvoice.DataSource = DTFakturPajak;
-                    dataGridInvoice.Columns["FLAG"].Visible = false;
-                    DataGridViewCheckBoxColumn SlipCmbBox = new DataGridViewCheckBoxColumn();
-                    SlipCmbBox.ValueType = typeof(bool);
-                    SlipCmbBox.Name = "SELECTED";
-                    SlipCmbBox.HeaderText = "SELECTED";
-                    dataGridInvoice.Columns.Add(SlipCmbBox);
-
-                    List<DataGridViewRow> CheckedData = new List<DataGridViewRow>();
-                    foreach (DataGridViewRow row in dataGridInvoice.Rows)
+                    else
                     {
 
-                        if (row.Cells["FLAG"].Value.ToString() == "9" )
-                        {
-                            CheckedData.Add(row);                            
-                            row.Cells["SELECTED"].Value = true;                            
-                        }
+                        DTParameterType = function.SelectDataPenerimaSlip(PengusahaBox.SelectedValue.ToString());
+                        RekTrmBox.DataSource = DTParameterType;
+                        RekTrmBox.DisplayMember = "NoRek";
+                        RekTrmBox.ValueMember = "NoRek";
+                        RefreshDataRekening();
                     }
-                   
-                    
-                    SupplierPembeli Pembeli = new SupplierPembeli();
-                    Pembeli = function.SelectPembeliByID(PembeliBox.SelectedValue.ToString());
-                    AdPengirimTxt.Text = Pembeli.Address;
-                    NPWPPengirimTxt.Text = Pembeli.NPWP;
-                    KrmBox.Text = Pembeli.CompanyName;
-
-
-
-
-
-
-
                 }
+                SlipPanelSetting("Edit");
+                panelSlipRekening.Visible = true;
+
+
+
+                DTFakturPajak = function.SelectInvoiceSlip(FPSearch, "Edit");
+                dataGridInvoice.Columns.Clear();
+                dataGridInvoice.DataSource = DTFakturPajak;
+                dataGridInvoice.Columns["FLAG"].Visible = false;
+                DataGridViewCheckBoxColumn SlipCmbBox = new DataGridViewCheckBoxColumn();
+                SlipCmbBox.ValueType = typeof(bool);
+                SlipCmbBox.Name = "SELECTED";
+                SlipCmbBox.HeaderText = "SELECTED";
+                dataGridInvoice.Columns.Add(SlipCmbBox);
+
+                List<DataGridViewRow> CheckedData = new List<DataGridViewRow>();
+                foreach (DataGridViewRow row in dataGridInvoice.Rows)
+                {
+
+                    if (row.Cells["FLAG"].Value.ToString() == "9")
+                    {
+                        CheckedData.Add(row);
+                        row.Cells["SELECTED"].Value = true;
+                    }
+                }
+
+
+                SupplierPembeli Pembeli = new SupplierPembeli();
+                Pembeli = function.SelectPembeliByID(PembeliBox.SelectedValue.ToString());
+                AdPengirimTxt.Text = Pembeli.Address;
+                NPWPPengirimTxt.Text = Pembeli.NPWP;
+                KrmBox.Text = Pembeli.CompanyName;
+
+
+
+
+
+
+
+            }
             //}
         }
-      
+
 
 
         private void ReprintBtn_Click(object sender, EventArgs e)
@@ -9347,7 +9275,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
 
                 //Path  
-                reportViewerFakturPajak.LocalReport.ReportPath = "Report/Bank/RaboBank.rdlc";               
+                reportViewerFakturPajak.LocalReport.ReportPath = "Report/Bank/RaboBank.rdlc";
 
 
                 FakturPajakSearch Data = new FakturPajakSearch();
@@ -9371,18 +9299,6 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("BANK", Data.BankPenerima),
                         new ReportParameter("BankAddress", ""),
 
-                        /*
-                        new ReportParameter("Date", Data.EndDate.ToString("dd-MMM-yyyy")),
-                        new ReportParameter("NPWPPenerima", Data.NPWP),
-                        new ReportParameter("CompanyNamePenerima", Data.DataPenerima),
-                        new ReportParameter("CompanyAddressPenerima", Data.AdPenerima),
-                        new ReportParameter("CompanyNamePengirim", Data.DataPengirim),
-                        new ReportParameter("CompanyAddressPengirim", Data.AdPengirim),
-                        new ReportParameter("NoRekeningCustomer", Data.NoRekPenerima),
-                        new ReportParameter("Terbilang", Data.TotalTerbilang),
-                        new ReportParameter("Total", decimal.Parse(Data.Total).ToString("N")),
-                        new ReportParameter("FakturPajakNumber", Data.KODE),
-                        */
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
 
@@ -9421,12 +9337,12 @@ namespace KBS.CHANDRA.SSC.GUI
 
             panelPrintSlip.Visible = false;
 
-                
+
         }
 
         private void PrintTunaiBtn_Click(object sender, EventArgs e)
         {
-             string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
+            string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
             if (Environment.OSVersion.Version.Major >= 6)
             {
                 path = Directory.GetParent(path).ToString();
@@ -9441,12 +9357,12 @@ namespace KBS.CHANDRA.SSC.GUI
 
 
                 //Path  
-                reportViewerFakturPajak.LocalReport.ReportPath = "Report/Bank/BCABuktiSetoran.rdlc";;
+                reportViewerFakturPajak.LocalReport.ReportPath = "Report/Bank/BCABuktiSetoran.rdlc"; ;
 
 
                 FakturPajakSearch Data = new FakturPajakSearch();
 
-                Data = function.PrintSlipPembayaran(GlobalVar.GlobalVarKodeInvoice);               
+                Data = function.PrintSlipPembayaran(GlobalVar.GlobalVarKodeInvoice);
 
                 ReportParameter[] rptParams = new ReportParameter[]
                     {
@@ -9498,7 +9414,7 @@ namespace KBS.CHANDRA.SSC.GUI
             }
 
             panelPrintSlip.Visible = false;
-                      
+
         }
 
         private void PrintTransferBtn_Click(object sender, EventArgs e)
@@ -9523,7 +9439,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 FakturPajakSearch Data = new FakturPajakSearch();
 
-                Data = function.PrintSlipPembayaran(GlobalVar.GlobalVarKodeInvoice);               
+                Data = function.PrintSlipPembayaran(GlobalVar.GlobalVarKodeInvoice);
 
                 ReportParameter[] rptParams = new ReportParameter[]
                     {
@@ -9598,8 +9514,8 @@ namespace KBS.CHANDRA.SSC.GUI
                     GlobalVar.GlobalVarKodeInvoice = row.Cells["ID"].Value.ToString();
                     try
                     {
-                        String Delete =  function.UpdatePembayaranDelete(row.Cells["ID"].Value.ToString());
-                        if ( Delete == "Success")
+                        String Delete = function.UpdatePembayaranDelete(row.Cells["ID"].Value.ToString());
+                        if (Delete == "Success")
                         {
                             Delete = function.DeleteInvoicePembayaranData(row.Cells["ID"].Value.ToString());
                         }
@@ -9612,7 +9528,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         logger.Error(ex.Message);
                     }
                 }
-                
+
             }
         }
 
@@ -9652,32 +9568,21 @@ namespace KBS.CHANDRA.SSC.GUI
 
         }
 
-       
-
-      
-
-
-        
-    
-      
-
-       
-      
-
-        
-
-
-
-
-
-
-
-
-
-
+        public static string RemoveSpecialCharacters(string str)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (char c in str)
+            {
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
+                {
+                    sb.Append(c);
+                }
+            }
+            return sb.ToString();
+        }
     }
 
-    
+
 
     #region itextsharp event
     public class _eventsMemoDiscount : PdfPageEventHelper
@@ -9686,7 +9591,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
         public DataRow rowHeader { get; set; }
 
-        public iTextSharp.text.Image ImageHeader {get; set;}
+        public iTextSharp.text.Image ImageHeader { get; set; }
 
         public override void OnStartPage(PdfWriter writer, Document document)
         {
@@ -9835,7 +9740,7 @@ namespace KBS.CHANDRA.SSC.GUI
             cellHeader.Phrase = new Phrase("Brand", boldTableFont);
             DetailTable.AddCell(cellHeader);
             cellHeader.Colspan = 7;
-            phrase = new Phrase();  
+            phrase = new Phrase();
             cellHeader.Phrase = new Phrase("Description", boldTableFont);
             DetailTable.AddCell(cellHeader);
 
@@ -9846,50 +9751,50 @@ namespace KBS.CHANDRA.SSC.GUI
         {
             var boldTableFont = FontFactory.GetFont("Arial", 8, iTextSharp.text.Font.BOLD);
             // cell height 
-              float cellHeight = document.BottomMargin - 25;
-        // PDF document size      
-              iTextSharp.text.Rectangle page = document.PageSize;
+            float cellHeight = document.BottomMargin - 25;
+            // PDF document size      
+            iTextSharp.text.Rectangle page = document.PageSize;
 
-        // create two column table
-              PdfPTable head = new PdfPTable(10);
+            // create two column table
+            PdfPTable head = new PdfPTable(10);
             head.SpacingBefore = 10;
-              head.TotalWidth = page.Width;
+            head.TotalWidth = page.Width;
 
-             PdfPCell c = new PdfPCell();
-
-        
+            PdfPCell c = new PdfPCell();
 
 
-        // add the header text
-             c = new PdfPCell(new Phrase("Powered By Kahar Duta Sarana - Business Solution", boldTableFont));
-             c.Colspan = 9;
-             c.VerticalAlignment = Element.ALIGN_MIDDLE;
-             c.HorizontalAlignment = Element.ALIGN_RIGHT;
-             c.Border = PdfPCell.NO_BORDER;
-             c.FixedHeight = cellHeight;
-             head.AddCell(c);
-
-        // add image; PdfPCell() overload sizes image to fit cell
-             c = new PdfPCell(ImageHeader, true);
-             c.Colspan = 1;
-             c.HorizontalAlignment = Element.ALIGN_LEFT;
-             c.VerticalAlignment = Element.ALIGN_MIDDLE;
-             c.FixedHeight = cellHeight;
-             c.Border = PdfPCell.NO_BORDER;
-             head.AddCell(c);
 
 
-        // since the table header is implemented using a PdfPTable, we call
-        // WriteSelectedRows(), which requires absolute positions!
-              head.WriteSelectedRows(
-                0, -1,  // first/last row; -1 flags all write all rows
-                0,      // left offset
+            // add the header text
+            c = new PdfPCell(new Phrase("Powered By Kahar Duta Sarana - Business Solution", boldTableFont));
+            c.Colspan = 9;
+            c.VerticalAlignment = Element.ALIGN_MIDDLE;
+            c.HorizontalAlignment = Element.ALIGN_RIGHT;
+            c.Border = PdfPCell.NO_BORDER;
+            c.FixedHeight = cellHeight;
+            head.AddCell(c);
+
+            // add image; PdfPCell() overload sizes image to fit cell
+            c = new PdfPCell(ImageHeader, true);
+            c.Colspan = 1;
+            c.HorizontalAlignment = Element.ALIGN_LEFT;
+            c.VerticalAlignment = Element.ALIGN_MIDDLE;
+            c.FixedHeight = cellHeight;
+            c.Border = PdfPCell.NO_BORDER;
+            head.AddCell(c);
+
+
+            // since the table header is implemented using a PdfPTable, we call
+            // WriteSelectedRows(), which requires absolute positions!
+            head.WriteSelectedRows(
+              0, -1,  // first/last row; -1 flags all write all rows
+              0,      // left offset
                 // ** bottom** yPos of the table
-                cellHeight + 10 ,
+              cellHeight + 10,
                 //page.Height - cellHeight + head.TotalHeight,
-                writer.DirectContent
-              );
-         
+              writer.DirectContent
+            );
+
         }
     }
 
@@ -9941,7 +9846,7 @@ namespace KBS.CHANDRA.SSC.GUI
             HeaderTable.AddCell(cellHeader);
 
 
-            
+
 
 
 
