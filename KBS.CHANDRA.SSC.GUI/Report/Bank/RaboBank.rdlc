@@ -11,6 +11,7 @@
               <TextRun>
                 <Value>=Parameters!NoRekeningCustomer.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -42,6 +43,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyNamePenerima.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -74,6 +76,7 @@
               <TextRun>
                 <Value>=Parameters!Total.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -108,6 +111,7 @@
               <TextRun>
                 <Value>=Parameters!Total.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>8pt</FontSize>
                 </Style>
               </TextRun>
@@ -142,6 +146,7 @@
               <TextRun>
                 <Value>=Parameters!Terbilang.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -174,6 +179,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyAddressPengirim.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -185,7 +191,7 @@
         <Top>4.35cm</Top>
         <Left>12.5525cm</Left>
         <Height>0.5cm</Height>
-        <Width>8.14667cm</Width>
+        <Width>8.45876cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -206,6 +212,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyNamePengirim.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -217,7 +224,7 @@
         <Top>3.93313cm</Top>
         <Left>12.5525cm</Left>
         <Height>0.5cm</Height>
-        <Width>8.14667cm</Width>
+        <Width>8.45876cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -238,12 +245,13 @@
               <TextRun>
                 <Value>=Parameters!BANK.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
             <Style>
-              <TextAlign>Center</TextAlign>
+              <TextAlign>Left</TextAlign>
             </Style>
           </Paragraph>
         </Paragraphs>
@@ -272,6 +280,7 @@
               <TextRun>
                 <Value>=Parameters!NPWPPengirim.Value</Value>
                 <Style>
+                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -280,11 +289,43 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>NPWPPengirim</rd:DefaultName>
-        <Top>4.7cm</Top>
+        <Top>5.0175cm</Top>
         <Left>16.04034cm</Left>
         <Height>0.5cm</Height>
-        <Width>4.65883cm</Width>
+        <Width>4.97092cm</Width>
         <ZIndex>8</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="BankAddress">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!BankAddress.Value</Value>
+                <Style>
+                  <FontFamily>Courier New</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>BankAddress</rd:DefaultName>
+        <Top>9.71423cm</Top>
+        <Left>1.2cm</Left>
+        <Height>0.65306cm</Height>
+        <Width>7.5cm</Width>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -374,6 +415,11 @@
     <ReportParameter Name="NPWPPengirim">
       <DataType>String</DataType>
       <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="BankAddress">
+      <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

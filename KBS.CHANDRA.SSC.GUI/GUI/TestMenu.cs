@@ -6214,7 +6214,7 @@ namespace KBS.CHANDRA.SSC.GUI
                     ErrorString = function.CekNoFaktur(InvHNewKodeTxt.Text);
                     if (ErrorString != "Already Exists")
                     {
-                        
+
                         try
                         {
                             ErrorString = function.InsertInvHeader(InvHNewKodeTxt.Text, PKPBox.SelectedValue.ToString(), PBKPBox.SelectedValue.ToString(), IStartDate.Text, IEndDate.Text, HComment.Text, FComment.Text);
@@ -6230,8 +6230,11 @@ namespace KBS.CHANDRA.SSC.GUI
                         HeaderVisible(DataIDH);
 
                     }
-                    MessageBox.Show("Insert Parameter: " + PHTypeBox.Text, ErrorString,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                    {
+                        MessageBox.Show("Kode Faktur Already Exists ", ErrorString,
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -7174,7 +7177,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
         private void UpdateHinvBtn_Click(object sender, EventArgs e)
         {
-
+            
             try
             {
                 ErrorString = function.UpdateInvHeaderStatus(IDKodeTxt.Text, IStartDate.Text, IEndDate.Text, HComment.Text, FComment.Text, InvHNewKodeTxt.Text);
@@ -8064,7 +8067,7 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 Pembeli = function.SelectPembeliByID(FP.IDPEMBELI);
                 Penjual = InvoiceIsHistory ? function.HistorySelectSupplierByID(FP.IDPENGUSAHA, invH.IDH) : function.SelectSupplierByID(FP.IDPENGUSAHA, invH.IDH);
-
+                
                 ReportParameter[] rptParams = new ReportParameter[]
                     {
                         new ReportParameter("Date", FP.EndDate.ToString("dd-MMM-yyyy")),
@@ -8078,6 +8081,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", decimal.Parse(invH.LASTTOTAL).ToString("N")),
                         new ReportParameter("FakturPajakNumber", FP.KODE),
                         new ReportParameter("Bank", Penjual.Bank),
+                        new ReportParameter("BankAddress", Penjual.BankAddress),
 
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
@@ -8189,6 +8193,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", decimal.Parse(invH.LASTTOTAL).ToString("N")),
                         new ReportParameter("FakturPajakNumber", FP.KODE),
                         new ReportParameter("BANK",  Penjual.Bank),
+                        new ReportParameter("BankAddress", Penjual.BankAddress),
 
                          
 
@@ -8806,26 +8811,36 @@ namespace KBS.CHANDRA.SSC.GUI
 
         private void SearchDataSlip()
         {
-            FakturPajakSearch FPSearch = new FakturPajakSearch();
-            if (PembeliBox.SelectedValue.ToString() != "9999")
+            try
             {
-                FPSearch.IDPEMBELI = PembeliBox.SelectedValue.ToString();
+                FakturPajakSearch FPSearch = new FakturPajakSearch();
+                if (PembeliBox.SelectedValue.ToString() != "9999")
+                {
+                    FPSearch.IDPEMBELI = PembeliBox.SelectedValue.ToString();
+                }
+                else
+                {
+                    FPSearch.IDPEMBELI = "";
+                }
+                FPSearch.IDPENGUSAHA = PengusahaBox.SelectedValue.ToString();
+
+                FPSearch.StartDate = StartSlipDate.Value;
+                FPSearch.EndDate = EndSlipDate.Value;
+
+
+                DTFakturPajak = function.SelectFakturPajakConfirmSlip(FPSearch);
+
+                dataGridSlip.DataSource = DTFakturPajak;
+                dataGridSlip.Columns["IDPEMBELI"].Visible = false;
+                dataGridSlip.Columns["IDPENGUSAHA"].Visible = false;
             }
-            else
+            catch (Exception ex)
             {
-                FPSearch.IDPEMBELI = "";
+                MessageBox.Show(ex.Message, "Data Field Salah, Mohon diisi dengan benar",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                logger.Error(ex.Message);
             }
-            FPSearch.IDPENGUSAHA = PengusahaBox.SelectedValue.ToString();
-
-            FPSearch.StartDate = StartSlipDate.Value;
-            FPSearch.EndDate = EndSlipDate.Value;
-
-
-            DTFakturPajak = function.SelectFakturPajakConfirmSlip(FPSearch);
-            
-            dataGridSlip.DataSource = DTFakturPajak;
-            dataGridSlip.Columns["IDPEMBELI"].Visible = false;
-            dataGridSlip.Columns["IDPENGUSAHA"].Visible = false;
             
         }
        
@@ -9309,6 +9324,7 @@ namespace KBS.CHANDRA.SSC.GUI
                     GlobalVar.GlobalVarKodeInvoice = row.Cells["ID"].Value.ToString();
 
                 }
+               // panelPrintInvoice.Visible = true;
                 panelPrintSlip.Visible = true;
             }
         }
@@ -9353,6 +9369,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", decimal.Parse(Data.Total).ToString("N")),
                         new ReportParameter("FakturPajakNumber", Data.KODE),
                         new ReportParameter("BANK", Data.BankPenerima),
+                        new ReportParameter("BankAddress", ""),
 
                         /*
                         new ReportParameter("Date", Data.EndDate.ToString("dd-MMM-yyyy")),
@@ -9521,6 +9538,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", decimal.Parse(Data.Total).ToString("N")),
                         new ReportParameter("FakturPajakNumber", Data.KODE),
                         new ReportParameter("Bank", Data.BankPenerima),
+                        new ReportParameter("BankAddress", ""),
 
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);

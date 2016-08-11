@@ -4525,9 +4525,9 @@
             this.panelPaymentProcess.Controls.Add(this.lblPengusahaKPajak);
             this.panelPaymentProcess.Controls.Add(this.lblkode);
             this.panelPaymentProcess.Controls.Add(this.lblPaymentProcessH);
-            this.panelPaymentProcess.Location = new System.Drawing.Point(0, 115);
+            this.panelPaymentProcess.Location = new System.Drawing.Point(26, 115);
             this.panelPaymentProcess.Name = "panelPaymentProcess";
-            this.panelPaymentProcess.Size = new System.Drawing.Size(1349, 499);
+            this.panelPaymentProcess.Size = new System.Drawing.Size(1323, 500);
             this.panelPaymentProcess.TabIndex = 114;
             // 
             // PrintPreviewBtn
@@ -4565,10 +4565,10 @@
             this.HInvdataGridView.AllowUserToAddRows = false;
             this.HInvdataGridView.AllowUserToDeleteRows = false;
             this.HInvdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.HInvdataGridView.Location = new System.Drawing.Point(64, 198);
+            this.HInvdataGridView.Location = new System.Drawing.Point(18, 198);
             this.HInvdataGridView.Name = "HInvdataGridView";
             this.HInvdataGridView.ReadOnly = true;
-            this.HInvdataGridView.Size = new System.Drawing.Size(1229, 269);
+            this.HInvdataGridView.Size = new System.Drawing.Size(1275, 289);
             this.HInvdataGridView.TabIndex = 9;
             this.HInvdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.HInvdataGridView_CellContentClick);
             // 
@@ -6474,10 +6474,10 @@
             this.radioButtonRabuBank.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonRabuBank.Location = new System.Drawing.Point(13, 20);
             this.radioButtonRabuBank.Name = "radioButtonRabuBank";
-            this.radioButtonRabuBank.Size = new System.Drawing.Size(99, 22);
+            this.radioButtonRabuBank.Size = new System.Drawing.Size(100, 22);
             this.radioButtonRabuBank.TabIndex = 148;
             this.radioButtonRabuBank.TabStop = true;
-            this.radioButtonRabuBank.Text = "Rabu Bank";
+            this.radioButtonRabuBank.Text = "Rabo Bank";
             this.radioButtonRabuBank.UseVisualStyleBackColor = true;
             // 
             // radioButtonSlip
@@ -6629,6 +6629,7 @@
             // 
             // panelSlipPembayaran
             // 
+            this.panelSlipPembayaran.Controls.Add(this.panelPrintSlip);
             this.panelSlipPembayaran.Controls.Add(this.panelSlipBtn);
             this.panelSlipPembayaran.Controls.Add(this.panelSlipNewInvoice);
             this.panelSlipPembayaran.Controls.Add(this.PembeliBox);
@@ -6642,7 +6643,6 @@
             this.panelSlipPembayaran.Controls.Add(this.label162);
             this.panelSlipPembayaran.Controls.Add(this.label163);
             this.panelSlipPembayaran.Controls.Add(this.dataGridSlip);
-            this.panelSlipPembayaran.Controls.Add(this.panelPrintSlip);
             this.panelSlipPembayaran.Location = new System.Drawing.Point(1, 131);
             this.panelSlipPembayaran.Name = "panelSlipPembayaran";
             this.panelSlipPembayaran.Size = new System.Drawing.Size(1349, 499);
@@ -7218,13 +7218,6 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panelPrintInvoice);
-            this.Controls.Add(this.panelProsesDetail);
-            this.Controls.Add(this.panelPaymentProcessNew);
-            this.Controls.Add(this.panelReportFakturPajak);
-            this.Controls.Add(this.panelMemoDiscount);
-            this.Controls.Add(this.panelValidasi);
-            this.Controls.Add(this.panelLogin);
-            this.Controls.Add(this.panelPaymentProcess);
             this.Controls.Add(this.panelSlipPembayaran);
             this.Controls.Add(this.panelUserManagement);
             this.Controls.Add(this.panelGenerateLabelSTCK);
@@ -7246,6 +7239,13 @@
             this.Controls.Add(this.panelMultipleSalesInput);
             this.Controls.Add(this.panelUploadInventory);
             this.Controls.Add(this.panelUploadPromo);
+            this.Controls.Add(this.panelProsesDetail);
+            this.Controls.Add(this.panelPaymentProcessNew);
+            this.Controls.Add(this.panelReportFakturPajak);
+            this.Controls.Add(this.panelMemoDiscount);
+            this.Controls.Add(this.panelValidasi);
+            this.Controls.Add(this.panelLogin);
+            this.Controls.Add(this.panelPaymentProcess);
             this.Controls.Add(this.shapeContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;

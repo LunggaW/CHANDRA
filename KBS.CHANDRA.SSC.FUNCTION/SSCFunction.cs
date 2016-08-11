@@ -4883,11 +4883,12 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek, " +
                     "kdspkinvoice.get_AN(efaccin) AtasNama, " +
-                    "(select BNKNAME from BANKS where BNKCODE = 'efacbank') Bank " +
+                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank, " +
+                    " (SELECT Substr(bbradr1 || bbradr2 , 1,50) FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) BankAddress " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = :ID and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from kdstrxinvoice where IDH = :IDH) " +
-                    "Group By foudgene.foucfin, fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN, efaccin,efaacount, efacbank, EFARFOU ";                    
+                    "Group By foudgene.foucfin, fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN, efaccin,efaacount, efacbank, EFARFOU , EFACBRANCH";                    
 
                 cmd.Parameters.Add(new OracleParameter(":ID", OracleDbType.Varchar2)).Value = ID;
                 cmd.Parameters.Add(new OracleParameter(":IDH", OracleDbType.Varchar2)).Value = IDH;
@@ -4907,6 +4908,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     Pengusaha.NoRek = dr["NoRek"].ToString();
                     Pengusaha.AN = dr["AtasNama"].ToString();
                     Pengusaha.Bank = dr["Bank"].ToString();
+                    Pengusaha.BankAddress = dr["BankAddress"].ToString();
                 }
 
                 this.Close();
@@ -4940,7 +4942,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek, " +
                     "kdspkinvoice.get_AN(efaccin) AtasNama, " +
-                    "(select BNKNAME from BANKS where BNKCODE = 'efacbank') Bank " +
+                    "(select BNKNAME from BANKS where BNKCODE = efacbank) Bank " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = :ID and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from kdstrxinvoice where IDH in (select IDH from kdsfakturpajak where kode in (" + Kode + "))) " +
@@ -4997,11 +4999,12 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek, " +
                     "kdspkinvoice.get_AN(efaccin) AtasNama, " +
-                    "(select BNKNAME from BANKS where BNKCODE = 'efacbank') Bank " +
+                     " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank, " +
+                    " (SELECT Substr(bbradr1 || bbradr2 , 1,50) FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) BankAddress " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = :ID and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from Hkdstrxinvoice where IDH = :IDH) " +
-                    "Group By foudgene.foucfin, fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN, efaccin,efaacount, efacbank, EFARFOU ";
+                    "Group By foudgene.foucfin, fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN, EFACBRANCH, efaccin,efaacount, efacbank, EFARFOU ";
 
                 cmd.Parameters.Add(new OracleParameter(":ID", OracleDbType.Varchar2)).Value = ID;
                 cmd.Parameters.Add(new OracleParameter(":IDH", OracleDbType.Varchar2)).Value = IDH;
@@ -5021,6 +5024,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     Pengusaha.NoRek = dr["NoRek"].ToString();
                     Pengusaha.AN = dr["AtasNama"].ToString();
                     Pengusaha.Bank = dr["Bank"].ToString();
+                    Pengusaha.BankAddress = dr["BankAddress"].ToString();
                 }
 
                 this.Close();
@@ -7487,7 +7491,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 cmd.CommandText = " insert into HKDSMSTBAYAR " +
                                   " select ID,DESCRIPTION,PEMBELI,PENGUSAHA,TOTAL,DATATUJUAN,ANTUJUAN,BANKTUJUAN, " +
                                   " DATAPENGIRIM,ADPENGIRIM,NPWP,STARTDATE,ENDDATE,FLAG,CREATEDDATE,SYSDATE, " +
-                                  " CREATEDBY,'" + GlobalVar.GlobalVarUsername + "',ADPENERIMA,REKTUJUAN FROM KDSMSTBAYAR WHERE ID  = '" + ID + "'";
+                                  " CREATEDBY,'" + GlobalVar.GlobalVarUsername + "',ADPENERIMA,REKTUJUAN,'' FROM KDSMSTBAYAR WHERE ID  = '" + ID + "'";
                 cmd.CommandType = CommandType.Text;
 
                 logger.Debug("Execute Command");

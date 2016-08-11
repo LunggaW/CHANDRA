@@ -11,6 +11,7 @@ namespace KBS.CHANDRA.SSC.DATAMODEL
         public string CompanyName { get; set; }
         public string Address { get; set; }
         public string Bank { get; set; }
+        public string BankAddress { get; set; }
         public string NoRek { get; set; }
         public string AN { get; set; }
     }
