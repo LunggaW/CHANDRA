@@ -30,21 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestMenu));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource31 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource32 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource33 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource34 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource35 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource36 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource37 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource38 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource39 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource40 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource41 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource42 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource43 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource44 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource45 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.KDSTRXINVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataSetTrxInvoice = new KBS.CHANDRA.SSC.GUI.DataSetTrxInvoice();
             this.KDSFAKTURPAJAKBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -608,6 +608,11 @@
             this.pictureBoxChandraLogoHeader = new System.Windows.Forms.PictureBox();
             this.pictureBoxLogoBottomKDS = new System.Windows.Forms.PictureBox();
             this.panelSlipPembayaran = new System.Windows.Forms.Panel();
+            this.panelPrintSlip = new System.Windows.Forms.Panel();
+            this.PrintTransferBtn = new System.Windows.Forms.Button();
+            this.PrintCancelBtn = new System.Windows.Forms.Button();
+            this.PrintRaboBtn = new System.Windows.Forms.Button();
+            this.PrintTunaiBtn = new System.Windows.Forms.Button();
             this.panelSlipBtn = new System.Windows.Forms.Panel();
             this.DeleteSlipBtn = new System.Windows.Forms.Button();
             this.EditSlipBtn = new System.Windows.Forms.Button();
@@ -620,6 +625,8 @@
             this.BackSlipBtn = new System.Windows.Forms.Button();
             this.TotalInvoiceTxt = new System.Windows.Forms.TextBox();
             this.panelSlipRekening = new System.Windows.Forms.Panel();
+            this.TransferTxt = new System.Windows.Forms.TextBox();
+            this.label152 = new System.Windows.Forms.Label();
             this.RekManual = new System.Windows.Forms.TextBox();
             this.ManualRek = new System.Windows.Forms.CheckBox();
             this.CompanyTxt = new System.Windows.Forms.TextBox();
@@ -656,11 +663,7 @@
             this.label162 = new System.Windows.Forms.Label();
             this.label163 = new System.Windows.Forms.Label();
             this.dataGridSlip = new System.Windows.Forms.DataGridView();
-            this.panelPrintSlip = new System.Windows.Forms.Panel();
-            this.PrintTransferBtn = new System.Windows.Forms.Button();
-            this.PrintCancelBtn = new System.Windows.Forms.Button();
-            this.PrintRaboBtn = new System.Windows.Forms.Button();
-            this.PrintTunaiBtn = new System.Windows.Forms.Button();
+            this.GiroBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.KDSTRXINVOICEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetTrxInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KDSFAKTURPAJAKBindingSource)).BeginInit();
@@ -740,12 +743,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxChandraLogoHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoBottomKDS)).BeginInit();
             this.panelSlipPembayaran.SuspendLayout();
+            this.panelPrintSlip.SuspendLayout();
             this.panelSlipBtn.SuspendLayout();
             this.panelSlipNewInvoice.SuspendLayout();
             this.panelSlipRekening.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSlip)).BeginInit();
-            this.panelPrintSlip.SuspendLayout();
             this.SuspendLayout();
             // 
             // KDSTRXINVOICEBindingSource
@@ -5148,7 +5151,7 @@
             this.OtherHeaderPanel.Controls.Add(this.label120);
             this.OtherHeaderPanel.Location = new System.Drawing.Point(48, 165);
             this.OtherHeaderPanel.Name = "OtherHeaderPanel";
-            this.OtherHeaderPanel.Size = new System.Drawing.Size(1289, 325);
+            this.OtherHeaderPanel.Size = new System.Drawing.Size(1289, 330);
             this.OtherHeaderPanel.TabIndex = 16;
             this.OtherHeaderPanel.Visible = false;
             this.OtherHeaderPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OtherHeaderPanel_Paint);
@@ -6540,57 +6543,57 @@
             // 
             // reportViewerFakturPajak
             // 
-            reportDataSource1.Name = "DataSetTrxInvoice";
-            reportDataSource1.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource2.Name = "DataSetCommentHeader";
-            reportDataSource2.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource3.Name = "DataSetExpenseFakturPajak";
-            reportDataSource3.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource4.Name = "DataSetTrxInvoice";
-            reportDataSource4.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource5.Name = "DataSetCommentHeader";
-            reportDataSource5.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource6.Name = "DataSetExpenseFakturPajak";
-            reportDataSource6.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource7.Name = "DataSetTrxInvoice";
-            reportDataSource7.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource8.Name = "DataSetCommentHeader";
-            reportDataSource8.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource9.Name = "DataSetExpenseFakturPajak";
-            reportDataSource9.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource10.Name = "DataSetTrxInvoice";
-            reportDataSource10.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource11.Name = "DataSetCommentHeader";
-            reportDataSource11.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource12.Name = "DataSetExpenseFakturPajak";
-            reportDataSource12.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource13.Name = "DataSetTrxInvoice";
-            reportDataSource13.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource14.Name = "DataSetCommentHeader";
-            reportDataSource14.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource15.Name = "DataSetExpenseFakturPajak";
-            reportDataSource15.Value = this.DataTableExpenseFakturPajakBindingSource;
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource6);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource7);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource8);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource9);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource10);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource11);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource12);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource13);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource14);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource15);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource1);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource4);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource5);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource6);
+            reportDataSource31.Name = "DataSetTrxInvoice";
+            reportDataSource31.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource32.Name = "DataSetCommentHeader";
+            reportDataSource32.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource33.Name = "DataSetExpenseFakturPajak";
+            reportDataSource33.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource34.Name = "DataSetTrxInvoice";
+            reportDataSource34.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource35.Name = "DataSetCommentHeader";
+            reportDataSource35.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource36.Name = "DataSetExpenseFakturPajak";
+            reportDataSource36.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource37.Name = "DataSetTrxInvoice";
+            reportDataSource37.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource38.Name = "DataSetCommentHeader";
+            reportDataSource38.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource39.Name = "DataSetExpenseFakturPajak";
+            reportDataSource39.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource40.Name = "DataSetTrxInvoice";
+            reportDataSource40.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource41.Name = "DataSetCommentHeader";
+            reportDataSource41.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource42.Name = "DataSetExpenseFakturPajak";
+            reportDataSource42.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource43.Name = "DataSetTrxInvoice";
+            reportDataSource43.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource44.Name = "DataSetCommentHeader";
+            reportDataSource44.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource45.Name = "DataSetExpenseFakturPajak";
+            reportDataSource45.Value = this.DataTableExpenseFakturPajakBindingSource;
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource31);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource32);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource33);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource34);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource35);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource36);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource37);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource38);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource39);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource40);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource41);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource42);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource43);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource44);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource45);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource31);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource32);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource33);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource34);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource35);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource36);
             this.reportViewerFakturPajak.LocalReport.ReportEmbeddedResource = "KBS.CHANDRA.SSC.GUI.Report.FakturPajak.rdlc";
             this.reportViewerFakturPajak.Location = new System.Drawing.Point(30, 16);
             this.reportViewerFakturPajak.Name = "reportViewerFakturPajak";
@@ -6647,6 +6650,63 @@
             this.panelSlipPembayaran.Name = "panelSlipPembayaran";
             this.panelSlipPembayaran.Size = new System.Drawing.Size(1349, 499);
             this.panelSlipPembayaran.TabIndex = 158;
+            // 
+            // panelPrintSlip
+            // 
+            this.panelPrintSlip.Controls.Add(this.GiroBtn);
+            this.panelPrintSlip.Controls.Add(this.PrintTransferBtn);
+            this.panelPrintSlip.Controls.Add(this.PrintCancelBtn);
+            this.panelPrintSlip.Controls.Add(this.PrintRaboBtn);
+            this.panelPrintSlip.Controls.Add(this.PrintTunaiBtn);
+            this.panelPrintSlip.Location = new System.Drawing.Point(11, 47);
+            this.panelPrintSlip.Name = "panelPrintSlip";
+            this.panelPrintSlip.Size = new System.Drawing.Size(1323, 436);
+            this.panelPrintSlip.TabIndex = 162;
+            this.panelPrintSlip.Visible = false;
+            // 
+            // PrintTransferBtn
+            // 
+            this.PrintTransferBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintTransferBtn.Location = new System.Drawing.Point(628, 120);
+            this.PrintTransferBtn.Name = "PrintTransferBtn";
+            this.PrintTransferBtn.Size = new System.Drawing.Size(125, 35);
+            this.PrintTransferBtn.TabIndex = 162;
+            this.PrintTransferBtn.Text = "BCA Transfer";
+            this.PrintTransferBtn.UseVisualStyleBackColor = true;
+            this.PrintTransferBtn.Click += new System.EventHandler(this.PrintTransferBtn_Click);
+            // 
+            // PrintCancelBtn
+            // 
+            this.PrintCancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintCancelBtn.Location = new System.Drawing.Point(567, 191);
+            this.PrintCancelBtn.Name = "PrintCancelBtn";
+            this.PrintCancelBtn.Size = new System.Drawing.Size(125, 35);
+            this.PrintCancelBtn.TabIndex = 161;
+            this.PrintCancelBtn.Text = "Cancel";
+            this.PrintCancelBtn.UseVisualStyleBackColor = true;
+            this.PrintCancelBtn.Click += new System.EventHandler(this.PrintCancelBtn_Click);
+            // 
+            // PrintRaboBtn
+            // 
+            this.PrintRaboBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintRaboBtn.Location = new System.Drawing.Point(502, 120);
+            this.PrintRaboBtn.Name = "PrintRaboBtn";
+            this.PrintRaboBtn.Size = new System.Drawing.Size(125, 35);
+            this.PrintRaboBtn.TabIndex = 159;
+            this.PrintRaboBtn.Text = "Rabo Bank";
+            this.PrintRaboBtn.UseVisualStyleBackColor = true;
+            this.PrintRaboBtn.Click += new System.EventHandler(this.PrintRaboBtn_Click);
+            // 
+            // PrintTunaiBtn
+            // 
+            this.PrintTunaiBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PrintTunaiBtn.Location = new System.Drawing.Point(502, 155);
+            this.PrintTunaiBtn.Name = "PrintTunaiBtn";
+            this.PrintTunaiBtn.Size = new System.Drawing.Size(125, 35);
+            this.PrintTunaiBtn.TabIndex = 158;
+            this.PrintTunaiBtn.Text = "BCA Tunai";
+            this.PrintTunaiBtn.UseVisualStyleBackColor = true;
+            this.PrintTunaiBtn.Click += new System.EventHandler(this.PrintTunaiBtn_Click);
             // 
             // panelSlipBtn
             // 
@@ -6777,6 +6837,8 @@
             // 
             // panelSlipRekening
             // 
+            this.panelSlipRekening.Controls.Add(this.TransferTxt);
+            this.panelSlipRekening.Controls.Add(this.label152);
             this.panelSlipRekening.Controls.Add(this.RekManual);
             this.panelSlipRekening.Controls.Add(this.ManualRek);
             this.panelSlipRekening.Controls.Add(this.CompanyTxt);
@@ -6801,6 +6863,25 @@
             this.panelSlipRekening.Name = "panelSlipRekening";
             this.panelSlipRekening.Size = new System.Drawing.Size(1207, 148);
             this.panelSlipRekening.TabIndex = 5;
+            // 
+            // TransferTxt
+            // 
+            this.TransferTxt.Location = new System.Drawing.Point(958, 37);
+            this.TransferTxt.Name = "TransferTxt";
+            this.TransferTxt.Size = new System.Drawing.Size(239, 20);
+            this.TransferTxt.TabIndex = 26;
+            this.TransferTxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TransferTxt.TextChanged += new System.EventHandler(this.TransferTxt_TextChanged);
+            this.TransferTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TransferTxt_KeyPress);
+            // 
+            // label152
+            // 
+            this.label152.AutoSize = true;
+            this.label152.Location = new System.Drawing.Point(845, 39);
+            this.label152.Name = "label152";
+            this.label152.Size = new System.Drawing.Size(75, 13);
+            this.label152.TabIndex = 25;
+            this.label152.Text = "Biaya Transfer";
             // 
             // RekManual
             // 
@@ -7145,61 +7226,16 @@
             this.dataGridSlip.Size = new System.Drawing.Size(1273, 285);
             this.dataGridSlip.TabIndex = 0;
             // 
-            // panelPrintSlip
+            // GiroBtn
             // 
-            this.panelPrintSlip.Controls.Add(this.PrintTransferBtn);
-            this.panelPrintSlip.Controls.Add(this.PrintCancelBtn);
-            this.panelPrintSlip.Controls.Add(this.PrintRaboBtn);
-            this.panelPrintSlip.Controls.Add(this.PrintTunaiBtn);
-            this.panelPrintSlip.Location = new System.Drawing.Point(11, 47);
-            this.panelPrintSlip.Name = "panelPrintSlip";
-            this.panelPrintSlip.Size = new System.Drawing.Size(1323, 436);
-            this.panelPrintSlip.TabIndex = 162;
-            this.panelPrintSlip.Visible = false;
-            // 
-            // PrintTransferBtn
-            // 
-            this.PrintTransferBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintTransferBtn.Location = new System.Drawing.Point(567, 191);
-            this.PrintTransferBtn.Name = "PrintTransferBtn";
-            this.PrintTransferBtn.Size = new System.Drawing.Size(125, 35);
-            this.PrintTransferBtn.TabIndex = 162;
-            this.PrintTransferBtn.Text = "BCA Transfer";
-            this.PrintTransferBtn.UseVisualStyleBackColor = true;
-            this.PrintTransferBtn.Click += new System.EventHandler(this.PrintTransferBtn_Click);
-            // 
-            // PrintCancelBtn
-            // 
-            this.PrintCancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintCancelBtn.Location = new System.Drawing.Point(567, 226);
-            this.PrintCancelBtn.Name = "PrintCancelBtn";
-            this.PrintCancelBtn.Size = new System.Drawing.Size(125, 35);
-            this.PrintCancelBtn.TabIndex = 161;
-            this.PrintCancelBtn.Text = "Cancel";
-            this.PrintCancelBtn.UseVisualStyleBackColor = true;
-            this.PrintCancelBtn.Click += new System.EventHandler(this.PrintCancelBtn_Click);
-            // 
-            // PrintRaboBtn
-            // 
-            this.PrintRaboBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintRaboBtn.Location = new System.Drawing.Point(567, 121);
-            this.PrintRaboBtn.Name = "PrintRaboBtn";
-            this.PrintRaboBtn.Size = new System.Drawing.Size(125, 35);
-            this.PrintRaboBtn.TabIndex = 159;
-            this.PrintRaboBtn.Text = "Rabo Bank";
-            this.PrintRaboBtn.UseVisualStyleBackColor = true;
-            this.PrintRaboBtn.Click += new System.EventHandler(this.PrintRaboBtn_Click);
-            // 
-            // PrintTunaiBtn
-            // 
-            this.PrintTunaiBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PrintTunaiBtn.Location = new System.Drawing.Point(567, 156);
-            this.PrintTunaiBtn.Name = "PrintTunaiBtn";
-            this.PrintTunaiBtn.Size = new System.Drawing.Size(125, 35);
-            this.PrintTunaiBtn.TabIndex = 158;
-            this.PrintTunaiBtn.Text = "BCA Tunai";
-            this.PrintTunaiBtn.UseVisualStyleBackColor = true;
-            this.PrintTunaiBtn.Click += new System.EventHandler(this.PrintTunaiBtn_Click);
+            this.GiroBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GiroBtn.Location = new System.Drawing.Point(628, 155);
+            this.GiroBtn.Name = "GiroBtn";
+            this.GiroBtn.Size = new System.Drawing.Size(125, 35);
+            this.GiroBtn.TabIndex = 163;
+            this.GiroBtn.Text = "Bilyet Giro";
+            this.GiroBtn.UseVisualStyleBackColor = true;
+            this.GiroBtn.Click += new System.EventHandler(this.GiroBtn_Click);
             // 
             // TestMenu
             // 
@@ -7217,7 +7253,6 @@
             this.Controls.Add(this.comboBoxSite);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelPrintInvoice);
             this.Controls.Add(this.panelSlipPembayaran);
             this.Controls.Add(this.panelUserManagement);
             this.Controls.Add(this.panelGenerateLabelSTCK);
@@ -7246,6 +7281,7 @@
             this.Controls.Add(this.panelValidasi);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelPaymentProcess);
+            this.Controls.Add(this.panelPrintInvoice);
             this.Controls.Add(this.shapeContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -7378,6 +7414,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoBottomKDS)).EndInit();
             this.panelSlipPembayaran.ResumeLayout(false);
             this.panelSlipPembayaran.PerformLayout();
+            this.panelPrintSlip.ResumeLayout(false);
             this.panelSlipBtn.ResumeLayout(false);
             this.panelSlipNewInvoice.ResumeLayout(false);
             this.panelSlipNewInvoice.PerformLayout();
@@ -7385,7 +7422,6 @@
             this.panelSlipRekening.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInvoice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridSlip)).EndInit();
-            this.panelPrintSlip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -8010,6 +8046,9 @@
         private System.Windows.Forms.Button PrintTunaiBtn;
         private System.Windows.Forms.TextBox RekManual;
         private System.Windows.Forms.CheckBox ManualRek;
+        private System.Windows.Forms.TextBox TransferTxt;
+        private System.Windows.Forms.Label label152;
+        private System.Windows.Forms.Button GiroBtn;
 
 
 

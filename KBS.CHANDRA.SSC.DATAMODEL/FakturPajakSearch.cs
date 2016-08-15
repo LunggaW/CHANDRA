@@ -30,6 +30,7 @@ namespace KBS.CHANDRA.SSC.DATAMODEL
         public string TotalTerbilang { get; set; }
         public string DataPenerima { get; set; }
         public string DataPengirim { get; set; }
+        public string Biaya { get; set; }
 
     }
 }

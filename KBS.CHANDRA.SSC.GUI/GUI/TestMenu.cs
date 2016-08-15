@@ -731,6 +731,7 @@ namespace KBS.CHANDRA.SSC.GUI
             activePanel.Visible = false;
             activePanel = panelReportFakturPajak;
             activePanel.Visible = true;
+            SearchRefreshReport();
         }
 
 
@@ -8777,6 +8778,7 @@ namespace KBS.CHANDRA.SSC.GUI
         private void printSlipToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RefreshSlipHeader();
+            
         }
         private void RefreshSlipHeader()
         {
@@ -8839,6 +8841,7 @@ namespace KBS.CHANDRA.SSC.GUI
                     UpdateSlipBtn.Visible = false;
                     panelSlipRekening.Visible = false;
                     TotalInvoiceTxt.Text = "0";
+                    TransferTxt.Text = "0";
                     TotalInvoiceSaveTxt.Text = "0";
                     LastValueTxt.Text = "0";
                     CompanyTxt.Text = "";
@@ -8892,6 +8895,7 @@ namespace KBS.CHANDRA.SSC.GUI
         {
 
             TotalInvoiceTxt.Text = "0";
+            TransferTxt.Text = "0";
             if (Convert.ToBoolean(dataGridInvoice["SELECTED", e.RowIndex].Value) == true)
             {
                 dataGridInvoice["SELECTED", e.RowIndex].Value = false;
@@ -8950,6 +8954,7 @@ namespace KBS.CHANDRA.SSC.GUI
             }
             TotalInvoiceTxt.Text = invH.LASTTOTAL;
             TotalInvoiceSaveTxt.Text = invH.TOTALDATAINV;
+            TotalInvoiceTxt.Text = (decimal.Parse(TotalInvoiceTxt.Text) - decimal.Parse(TransferTxt.Text)).ToString();
 
         }
 
@@ -8977,6 +8982,7 @@ namespace KBS.CHANDRA.SSC.GUI
             FPSearch.EndDate = EndSlipDate.Value;
             FPSearch.InvoiceNo = DescPayTxt.Text;
             FPSearch.Total = TotalInvoiceSaveTxt.Text;
+            FPSearch.Biaya = TransferTxt.Text;
 
             try
             {
@@ -8990,7 +8996,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 else
                 {
                     FPSearch.No = NoPembayaranTxt.Text;
-                    Result = function.InsertInvoicePembayaran(FPSearch, Status);
+                    Result = function.InsertInvoicePembayaran(FPSearch, "Update Data");
                 }
                 if (Result == "Success")
                 {
@@ -9086,6 +9092,7 @@ namespace KBS.CHANDRA.SSC.GUI
                 FPSearch.BankPenerima = BankPenerimaTxt.Text;
                 FPSearch.AdPenerima = AdPenerimaTxt.Text;
                 FPSearch.Penerima = CompanyTxt.Text;
+                FPSearch.Biaya = TransferTxt.Text;
 
                 String Result = function.InsertInvoicePembayaran(FPSearch, "Update");
 
@@ -9161,6 +9168,7 @@ namespace KBS.CHANDRA.SSC.GUI
                     GlobalVar.GlobalVarKodeInvoice = row.Cells["ID"].Value.ToString();
                     TotalInvoiceTxt.Text = Decimal.Parse(row.Cells["TOTAL"].Value.ToString()).ToString("N");
                     TotalInvoiceSaveTxt.Text = row.Cells["TOTAL"].Value.ToString();
+                    TransferTxt.Text = row.Cells["TRANSFER"].Value.ToString();
                     LastValueTxt.Text = row.Cells["TOTAL"].Value.ToString();
                     FPSearch.IDPEMBELI = row.Cells["IDPEMBELI"].Value.ToString();
                     FPSearch.IDPENGUSAHA = row.Cells["IDPENGUSAHA"].Value.ToString();
@@ -9579,6 +9587,113 @@ namespace KBS.CHANDRA.SSC.GUI
                 }
             }
             return sb.ToString();
+        }
+
+        private void TransferTxt_TextChanged(object sender, EventArgs e)
+        {
+            if (TransferTxt.Text == "")
+            {
+                TransferTxt.Text = "0";
+                TotalInvoiceTxt.Text = (decimal.Parse(TotalInvoiceTxt.Text) - decimal.Parse(TransferTxt.Text)).ToString();
+            }
+            else
+            {
+                TotalInvoiceTxt.Text = (decimal.Parse(TotalInvoiceTxt.Text) - decimal.Parse(TransferTxt.Text)).ToString();
+            }
+        }
+
+        private void TransferTxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void GiroBtn_Click(object sender, EventArgs e)
+        {
+
+            string path = Directory.GetParent(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)).FullName;
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                path = Directory.GetParent(path).ToString();
+            }
+            String Exclude = RemoveSpecialCharacters(DateTime.Now.ToString());
+            path = path + "\\Giro" + Exclude + ".pdf";
+
+            try
+            {
+                //Reset
+                reportViewerFakturPajak.Reset();
+
+
+                //Path  
+                reportViewerFakturPajak.LocalReport.ReportPath = "Report/InvoiceTotal.rdlc";
+                
+
+
+                FakturPajakSearch Data = new FakturPajakSearch();
+
+                Data = function.PrintSlipPembayaran(GlobalVar.GlobalVarKodeInvoice);
+
+                ReportParameter[] rptParams = new ReportParameter[]
+                    {
+                                             
+                        new ReportParameter("NPWPPengusahaKenaPajak", Data.NPWP),
+                        new ReportParameter("CompanyNamePengusahaKenaPajak", Data.DataPenerima),
+                        new ReportParameter("CompanyAddressPengusahaKenaPajak", Data.AdPenerima),
+                        new ReportParameter("FakturPajakNumber", Data.KODE),
+                        new ReportParameter("Total", decimal.Parse(Data.Total.ToString()).ToString("N")),
+                        new ReportParameter("Terbilang", Data.TotalTerbilang),
+                        new ReportParameter("LastModified", Data.LastModified.ToString("dd MMM yy")),
+                        
+                    };
+                reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
+
+
+                //Refresh
+                reportViewerFakturPajak.LocalReport.Refresh();
+
+
+                //Write to File
+                Warning[] warnings;
+                string[] streamids;
+                string mimeType;
+                string encoding;
+                string filenameExtension;
+
+                byte[] bytes = reportViewerFakturPajak.LocalReport.Render(
+                    "PDF", null, out mimeType, out encoding, out filenameExtension,
+                    out streamids, out warnings);
+
+                using (FileStream fs = new FileStream(path, FileMode.Create))
+                {
+                    fs.Write(bytes, 0, bytes.Length);
+                }
+
+                System.Diagnostics.Process.Start(@"" + path + "");
+                MessageBox.Show("Success Me-generate report", "Success Generating Report",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error Occured",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Error(ex.Message);
+                logger.Error(ex.InnerException);
+            }
+
+            panelPrintSlip.Visible = false;
+
+
+
         }
     }
 

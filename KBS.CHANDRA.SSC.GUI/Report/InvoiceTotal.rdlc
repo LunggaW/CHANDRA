@@ -1,40 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition">
-  <DataSources>
-    <DataSource Name="DataSetExpenseFakturPajak">
-      <ConnectionProperties>
-        <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
-      </ConnectionProperties>
-      <rd:DataSourceID>13a4f1a9-f801-4cfe-8b79-d9b4e1753bd6</rd:DataSourceID>
-    </DataSource>
-  </DataSources>
-  <DataSets>
-    <DataSet Name="DataSetExpenseFakturPajak">
-      <Fields>
-        <Field Name="KETERANGAN">
-          <DataField>KETERANGAN</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="TOTAL">
-          <DataField>TOTAL</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSetExpenseFakturPajak</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <rd:DataSetInfo>
-        <rd:DataSetName>DataSetExpenseFakturPajak</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Lungga\Documents\Visual Studio 2010\Projects\CHANDRA-master\KBS.CHANDRA.SSC.GUI\DataSetExpenseFakturPajak.xsd</rd:SchemaPath>
-        <rd:TableName>DataTableExpenseFakturPajak</rd:TableName>
-        <rd:TableAdapterFillMethod />
-        <rd:TableAdapterGetDataMethod />
-        <rd:TableAdapterName />
-      </rd:DataSetInfo>
-    </DataSet>
-  </DataSets>
   <Body>
     <ReportItems>
       <Rectangle Name="Rectangle1">
@@ -1099,7 +1064,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>Biaya</Value>
+                        <Value>= "Pembayaran No : " &amp; Parameters!FakturPajakNumber.Value</Value>
                         <Style>
                           <FontSize>8pt</FontSize>
                         </Style>

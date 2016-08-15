@@ -12,7 +12,7 @@
                 <Value>=Parameters!NoRekeningCustomer.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -43,8 +43,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyNamePenerima.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -54,7 +53,7 @@
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>4.43312cm</Top>
         <Left>1.2cm</Left>
-        <Height>0.5cm</Height>
+        <Height>0.68521cm</Height>
         <Width>7.5cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -77,7 +76,7 @@
                 <Value>=Parameters!Total.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
-                  <FontSize>8pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -87,10 +86,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>9.88208cm</Top>
-        <Left>17.66188cm</Left>
-        <Height>0.48521cm</Height>
-        <Width>3.34938cm</Width>
+        <Top>9.71423cm</Top>
+        <Left>17.34438cm</Left>
+        <Height>0.65306cm</Height>
+        <Width>3.66688cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -112,7 +111,7 @@
                 <Value>=Parameters!Total.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
-                  <FontSize>8pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -122,10 +121,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>8.48208cm</Top>
-        <Left>17.66188cm</Left>
-        <Height>0.48521cm</Height>
-        <Width>3.34938cm</Width>
+        <Top>8.32cm</Top>
+        <Left>17.34438cm</Left>
+        <Height>0.64729cm</Height>
+        <Width>3.66688cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -213,7 +212,6 @@
                 <Value>=Parameters!CompanyNamePengirim.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -246,7 +244,7 @@
                 <Value>=Parameters!BANK.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>

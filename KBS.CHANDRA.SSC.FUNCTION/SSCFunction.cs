@@ -3388,13 +3388,14 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     //"FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek , " +
                     "kdspkinvoice.get_AN(efaccin) AtasNama, " +
-                    "(select BNKNAME from BANKS where BNKCODE = 'efacbank') Bank " +
+                    //"(select BNKNAME from BANKS where BNKCODE = 'efacbank') Bank " +
+                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = '" + ID + "' and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from kdstrxinvoice where IDH in (select IDH from kdsfakturpajak where IDPENGUSAHA = '" + ID + "')) " +
                     " and decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) = '" + Rek + "' " +
                     "Group By foudgene.foucfin, " +
-                    "fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN,  "+
+                    "fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN, EFACBRANCH,  " +
                     "efaccin,efaacount, efacbank, EFARFOU";
 
                 
@@ -4116,11 +4117,11 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText =
-                    " SELECT  KDSMSTBAYAR.ID  , Description, foudgene.foulibl as Pengusaha,PENGUSAHA as IDPENGUSAHA, KDSPARAM.LongDesc as Pembeli, PEMBELI as IDPEMBELI, StartDate, EndDate, Total, " +
-                    " RekTujuan, ANTujuan, BankTujuan, DataPengirim, NPWP,MANUAL  from KDSMSTBAYAR, foudgene, KDSPARAM where "+
+                    " SELECT  KDSMSTBAYAR.ID  , Description, foudgene.foulibl as Pengusaha,PENGUSAHA as IDPENGUSAHA, KDSPARAM.LongDesc as Pembeli, PEMBELI as IDPEMBELI, StartDate, EndDate, Total, nvl(BIAYA,'0')  as TRANSFER , Total - nvl(BIAYA,'0') as TotalAkhir, " +
+                    " RekTujuan, ANTujuan, BankTujuan, DataPengirim, NPWP,MANUAL from KDSMSTBAYAR, foudgene, KDSPARAM where "+
                     " foucnuf = PENGUSAHA and PRMVAR1 = 'Pembeli' and KDSPARAM.ID = KDSMSTBAYAR.PEMBELI" +
                     " and STARTDATE >= :FromDate " +
-                    " and ENDDATE <= :ToDate ";
+                    " and ENDDATE <= :ToDate and KDSMSTBAYAR.CREATEDBY = '" + GlobalVar.GlobalVarUsername + "' ";
 
                 cmd.Parameters.Add(new OracleParameter(":FromDate", OracleDbType.Date)).Value = FPSearch.StartDate.Date;
                 cmd.Parameters.Add(new OracleParameter(":ToDate", OracleDbType.Date)).Value = FPSearch.EndDate.Date;
@@ -4173,7 +4174,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "inner join foudgene on foucnuf = KDSFAKTURPAJAK.IDPENGUSAHA " +
                     "inner join KDSPARAM on ID = KDSFAKTURPAJAK.IDPEMBELI " +
                     "where STARTDATE >= :FromDate " +
-                    "and ENDDATE <= :ToDate " +
+                    "and ENDDATE <= :ToDate and KDSFAKTURPAJAK.CREATEDBY = '" + GlobalVar.GlobalVarUsername + "' " +
                     "and (STATUS = 'CONFIRM' " +
                     "or STATUS = 'CONFIRM EDIT') ";
 
@@ -4974,11 +4975,12 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek, " +
                     "kdspkinvoice.get_AN(efaccin) AtasNama, " +
-                    "(select BNKNAME from BANKS where BNKCODE = efacbank) Bank " +
+                    //"(select BNKNAME from BANKS where BNKCODE = efacbank) Bank " +
+                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = :ID and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from kdstrxinvoice where IDH in (select IDH from kdsfakturpajak where kode in (" + Kode + "))) " +
-                    "Group By foudgene.foucfin, fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN, efaccin,efaacount, efacbank, EFARFOU ";
+                    "Group By foudgene.foucfin, fadrais, fadrue1, fadrue2, fadvill, fadregn, FADIDEN, efaccin,efaacount, efacbank,EFACBRANCH, EFARFOU ";
 
                 cmd.Parameters.Add(new OracleParameter(":ID", OracleDbType.Varchar2)).Value = ID;
              //   cmd.Parameters.Add(new OracleParameter(":Kode", OracleDbType.Varchar2)).Value = Kode;
@@ -5082,9 +5084,9 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText =
-                    " select ID,DESCRIPTION,PEMBELI,PENGUSAHA,TOTAL, kdspkinvoice.terbilang_indo(TOTAL) TERBILANG, " +
+                    " select ID,DESCRIPTION,PEMBELI,PENGUSAHA,Total - nvl(BIAYA,'0') as TOTAL2, kdspkinvoice.terbilang_indo(Total - nvl(BIAYA,'0')) TERBILANG, " +
                     " DATATUJUAN,ANTUJUAN,BANKTUJUAN,DATAPENGIRIM,ADPENGIRIM, " +
-                    " NPWP,STARTDATE,ENDDATE,ADPENERIMA,REKTUJUAN FROM KDSMSTBAYAR WHERE ID = '"+ ID +"'";                
+                    " NPWP,STARTDATE,ENDDATE,ADPENERIMA,REKTUJUAN, MODIFIEDDATE FROM KDSMSTBAYAR WHERE ID = '"+ ID +"'";                
 
                 cmd.CommandType = CommandType.Text;
 
@@ -5095,7 +5097,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 while (dr.Read())
                 {
                     Faktur.KODE = dr["DESCRIPTION"].ToString();                
-                    Faktur.Total = dr["TOTAL"].ToString();
+                    Faktur.Total = dr["TOTAL2"].ToString();
                     Faktur.DataPenerima = dr["DATATUJUAN"].ToString();
                     Faktur.ANPenerima = dr["ANTUJUAN"].ToString();
                     Faktur.BankPenerima = dr["BANKTUJUAN"].ToString();
@@ -5107,6 +5109,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     Faktur.AdPenerima = dr["ADPENERIMA"].ToString();
                     Faktur.NoRekPenerima = dr["REKTUJUAN"].ToString();
                     Faktur.TotalTerbilang = dr["TERBILANG"].ToString();
+                    Faktur.LastModified = DateTime.Parse(dr["MODIFIEDDATE"].ToString());
                 }
 
                 this.Close();
@@ -7523,7 +7526,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 cmd.CommandText = " insert into HKDSMSTBAYAR " +
                                   " select ID,DESCRIPTION,PEMBELI,PENGUSAHA,TOTAL,DATATUJUAN,ANTUJUAN,BANKTUJUAN, " +
                                   " DATAPENGIRIM,ADPENGIRIM,NPWP,STARTDATE,ENDDATE,FLAG,CREATEDDATE,SYSDATE, " +
-                                  " CREATEDBY,'" + GlobalVar.GlobalVarUsername + "',ADPENERIMA,REKTUJUAN,'' FROM KDSMSTBAYAR WHERE ID  = '" + ID + "'";
+                                  " CREATEDBY,'" + GlobalVar.GlobalVarUsername + "',ADPENERIMA,REKTUJUAN,'', BIAYA FROM KDSMSTBAYAR WHERE ID  = '" + ID + "'";
                 cmd.CommandType = CommandType.Text;
 
                 logger.Debug("Execute Command");
@@ -7746,10 +7749,10 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 if (Status == "Insert")
                 {
                     cmd.CommandText =
-                        " INSERT INTO KDSMSTBAYAR (ID,DESCRIPTION, PEMBELI,PENGUSAHA,TOTAL,STARTDATE,ENDDATE,FLAG,CREATEDDATE,MODIFIEDDATE,CREATEDBY,MODIFIEDBY, MANUAL  ) " +
+                        " INSERT INTO KDSMSTBAYAR (ID,DESCRIPTION, PEMBELI,PENGUSAHA,TOTAL,STARTDATE,ENDDATE,FLAG,CREATEDDATE,MODIFIEDDATE,CREATEDBY,MODIFIEDBY, MANUAL, BIAYA  ) " +
                         " VALUES ( (select nvl(max(ID),0) + 1 from KDSMSTBAYAR), '" + FPSearch.InvoiceNo  + "', '" + FPSearch.IDPEMBELI + "', '" + FPSearch.IDPENGUSAHA + "' " +
                         ", '" + FPSearch.Total + "', :FromDate , :ToDate , " +
-                        " '0', SYSDATE, SYSDATE, '" + GlobalVar.GlobalVarUsername + "', '" + GlobalVar.GlobalVarUsername + "' , '" + FPSearch.STATUS + "')";
+                        " '0', SYSDATE, SYSDATE, '" + GlobalVar.GlobalVarUsername + "', '" + GlobalVar.GlobalVarUsername + "' , '" + FPSearch.STATUS + "', '" + FPSearch.Biaya + "' )";
 
                     cmd.Parameters.Add(new OracleParameter(":FromDate", OracleDbType.Date)).Value = FPSearch.StartDate.Date;
                     cmd.Parameters.Add(new OracleParameter(":ToDate", OracleDbType.Date)).Value = FPSearch.EndDate.Date;
@@ -7759,7 +7762,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 else if (Status == "Update Data")
                 {
                     cmd.CommandText =
-                       " Update KDSMSTBAYAR set TOTAL = '" + FPSearch.Total + "', DESCRIPTION = '" + FPSearch.InvoiceNo + "'  WHERE ID = '" + FPSearch.No + "' ";
+                       " Update KDSMSTBAYAR set TOTAL = '" + FPSearch.Total + "', DESCRIPTION = '" + FPSearch.InvoiceNo + "', BIAYA =  '" + FPSearch.Biaya + "'  WHERE ID = '" + FPSearch.No + "' ";
 
                     cmd.CommandType = CommandType.Text;
                 }
@@ -7777,6 +7780,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                        " ,ADPENERIMA = '" + FPSearch.AdPenerima  +"' " +
                        " ,REKTUJUAN = '" + FPSearch.NoRekPenerima +"' " +
                        " ,MANUAL = '" + FPSearch.STATUS + "' " +
+                       " , BIAYA =  '" + FPSearch.Biaya + "' "+
                        " WHERE ID = '" +  FPSearch.No  +"' ";
 
                     cmd.CommandType = CommandType.Text;
@@ -8541,7 +8545,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                             //" NOMODIFIED " + 
                             " FROM " +
                             "   KDSFAKTURPAJAK " +
-                            " WHere IDH = IDH and STATUS in ('CREATED','CONFIRM EDIT')";
+                            " WHere IDH = IDH and STATUS in ('CREATED','CONFIRM EDIT') and CREATEDBY = '"+ GlobalVar.GlobalVarUsername + "'";
 
 
                 if (!string.IsNullOrWhiteSpace(Kode))

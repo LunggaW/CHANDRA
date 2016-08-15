@@ -43,7 +43,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyNamePenerima.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
+                  <FontFamily>Arial Black</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -76,8 +76,7 @@
               <TextRun>
                 <Value>=Parameters!Total.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontSize>8pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -85,10 +84,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>15.2cm</Top>
-        <Left>9.95875cm</Left>
-        <Height>0.45875cm</Height>
-        <Width>3.29646cm</Width>
+        <Top>15.06771cm</Top>
+        <Left>9.58833cm</Left>
+        <Height>0.59104cm</Height>
+        <Width>3.66688cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -109,8 +108,7 @@
               <TextRun>
                 <Value>=Parameters!Total.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontSize>8pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -118,10 +116,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>13.86cm</Top>
-        <Left>9.95875cm</Left>
-        <Height>0.45875cm</Height>
-        <Width>3.29646cm</Width>
+        <Top>13.70125cm</Top>
+        <Left>9.58833cm</Left>
+        <Height>0.6175cm</Height>
+        <Width>3.66688cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -142,7 +140,6 @@
               <TextRun>
                 <Value>=Parameters!Terbilang.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
                 </Style>
               </TextRun>
@@ -208,8 +205,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyNamePengirim.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -241,8 +237,7 @@
               <TextRun>
                 <Value>=Parameters!CompanyAddressPengirim.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -274,8 +269,7 @@
               <TextRun>
                 <Value>=Parameters!Bank.Value</Value>
                 <Style>
-                  <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>11pt</FontSize>
                 </Style>
               </TextRun>
             </TextRuns>
