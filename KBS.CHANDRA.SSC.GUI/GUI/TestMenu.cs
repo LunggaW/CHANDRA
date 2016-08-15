@@ -7692,6 +7692,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", expenseFP.Total),
                         new ReportParameter("Terbilang", expenseFP.Terbilang),
                         new ReportParameter("LastModified", FP.LastModified.ToString("dd MMM yy")),
+                        new ReportParameter("TypeChandra", FP.Pengirim),
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
 
@@ -7801,6 +7802,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", decimal.Parse(expenseFP.Total.ToString()).ToString("N")),
                         new ReportParameter("Terbilang", expenseFP.Terbilang),
                         new ReportParameter("LastModified", FP.LastModified.ToString("dd MMM yy")),
+                        new ReportParameter("TypeChandra", FP.Pengirim),
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
 
@@ -9653,6 +9655,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", decimal.Parse(Data.Total.ToString()).ToString("N")),
                         new ReportParameter("Terbilang", Data.TotalTerbilang),
                         new ReportParameter("LastModified", Data.LastModified.ToString("dd MMM yy")),
+                        new ReportParameter("TypeChandra", Data.Pengirim),
                         
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);

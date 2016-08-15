@@ -4808,6 +4808,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select KODE, IDPENGUSAHA, " +
+                                  " nvl((select LONGDESC from KDSPARAM where KDSPARAM.ID = KDSFAKTURPAJAK.IDPEMBELI), 'PT. SEKAWAN CHANDRA ABADI') CHANDRATYPE , " +
                                   "IDPEMBELI, STATUS, COMMENTHEADER, COMMENTFOOTER, STARTDATE, ENDDATE , MODIFIEDDATE " +
                                   "from kdsfakturpajak " +
                                   "where KODE = :Code";
@@ -4827,6 +4828,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     FPSearch.KODE = dr["KODE"].ToString();
                     FPSearch.IDPENGUSAHA = dr["IDPENGUSAHA"].ToString();
                     FPSearch.IDPEMBELI = dr["IDPEMBELI"].ToString();
+                    FPSearch.Pengirim = dr["CHANDRATYPE"].ToString();
                     FPSearch.STATUS = dr["STATUS"].ToString();
                     FPSearch.COMMENTHEADER = dr["COMMENTHEADER"].ToString();
                     FPSearch.COMMENTFOOTER = dr["COMMENTFOOTER"].ToString();
@@ -4858,6 +4860,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select KODE, IDPENGUSAHA, " +
+                                  " nvl((select LONGDESC from KDSPARAM where KDSPARAM.ID = KDSFAKTURPAJAK.IDPEMBELI), 'PT. SEKAWAN CHANDRA ABADI') CHANDRATYPE , " +
                                   "IDPEMBELI, STATUS, COMMENTHEADER, COMMENTFOOTER, STARTDATE, ENDDATE , MODIFIEDDATE " +
                                   "from hkdsfakturpajak " +
                                   "where KODE = :Code";
@@ -4878,6 +4881,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     FPSearch.IDPENGUSAHA = dr["IDPENGUSAHA"].ToString();
                     FPSearch.IDPEMBELI = dr["IDPEMBELI"].ToString();
                     FPSearch.STATUS = dr["STATUS"].ToString();
+                    FPSearch.Pengirim = dr["CHANDRATYPE"].ToString();
                     FPSearch.COMMENTHEADER = dr["COMMENTHEADER"].ToString();
                     FPSearch.COMMENTFOOTER = dr["COMMENTFOOTER"].ToString();
                     FPSearch.StartDate = DateTime.Parse(dr["STARTDATE"].ToString());
@@ -5085,6 +5089,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText =
                     " select ID,DESCRIPTION,PEMBELI,PENGUSAHA,Total - nvl(BIAYA,'0') as TOTAL2, kdspkinvoice.terbilang_indo(Total - nvl(BIAYA,'0')) TERBILANG, " +
+                    " nvl((select LONGDESC from KDSPARAM where KDSPARAM.ID = KDSFAKTURPAJAK.IDPEMBELI), 'PT. SEKAWAN CHANDRA ABADI') CHANDRATYPE , " +
                     " DATATUJUAN,ANTUJUAN,BANKTUJUAN,DATAPENGIRIM,ADPENGIRIM, " +
                     " NPWP,STARTDATE,ENDDATE,ADPENERIMA,REKTUJUAN, MODIFIEDDATE FROM KDSMSTBAYAR WHERE ID = '"+ ID +"'";                
 
@@ -5103,6 +5108,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     Faktur.BankPenerima = dr["BANKTUJUAN"].ToString();
                     Faktur.DataPengirim = dr["DATAPENGIRIM"].ToString();
                     Faktur.AdPengirim = dr["ADPENGIRIM"].ToString();
+                    Faktur.Pengirim = dr["CHANDRATYPE"].ToString();
                     Faktur.NPWP = dr["NPWP"].ToString();
                     Faktur.StartDate = DateTime.Parse(dr["STARTDATE"].ToString());
                     Faktur.EndDate = DateTime.Parse(dr["ENDDATE"].ToString());
