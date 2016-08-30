@@ -12,7 +12,8 @@
                 <Value>=Parameters!NoRekeningCustomer.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
-                  <FontSize>9pt</FontSize>
+                  <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -23,7 +24,7 @@
         <Top>2.8cm</Top>
         <Left>4.6cm</Left>
         <Height>0.5cm</Height>
-        <Width>6.26458cm</Width>
+        <Width>7.05833cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -45,6 +46,7 @@
                 <Style>
                   <FontFamily>Arial Black</FontFamily>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -55,7 +57,7 @@
         <Top>3.15cm</Top>
         <Left>4.6cm</Left>
         <Height>0.5cm</Height>
-        <Width>6.26458cm</Width>
+        <Width>7.05833cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -174,6 +176,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -184,7 +187,7 @@
         <Top>3.50639cm</Top>
         <Left>4.6cm</Left>
         <Height>0.5cm</Height>
-        <Width>6.26458cm</Width>
+        <Width>7.05833cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -206,6 +209,7 @@
                 <Value>=Parameters!CompanyNamePengirim.Value</Value>
                 <Style>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -213,10 +217,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>CompanyNamePengirim</rd:DefaultName>
-        <Top>7.0498cm</Top>
+        <Top>6.97043cm</Top>
         <Left>4.6cm</Left>
-        <Height>0.5cm</Height>
-        <Width>6.26458cm</Width>
+        <Height>0.57938cm</Height>
+        <Width>7.05833cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <Border>
@@ -238,6 +242,7 @@
                 <Value>=Parameters!CompanyAddressPengirim.Value</Value>
                 <Style>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -247,8 +252,8 @@
         <rd:DefaultName>CompanyAddressPengirim</rd:DefaultName>
         <Top>7.42cm</Top>
         <Left>4.6cm</Left>
-        <Height>0.5cm</Height>
-        <Width>6.26458cm</Width>
+        <Height>0.57938cm</Height>
+        <Width>7.05833cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -270,6 +275,7 @@
                 <Value>=Parameters!Bank.Value</Value>
                 <Style>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -302,6 +308,7 @@
                 <Value>=Parameters!BankAddress.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>

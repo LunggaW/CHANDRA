@@ -3387,9 +3387,10 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     //"fadregn      AS ProvinsiPengirim, " +
                     //"FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek , " +
-                    "kdspkinvoice.get_AN(efaccin) AtasNama, " +
+                    "nvl(kdspkinvoice.get_AN(efaccin),(SELECT FCBIBAN FROM FOUCOMPTE WHERE FCBCCIN=efaccin)) AtasNama, " +
+                    "nvl((SELECT FCBIBAN FROM FOUCOMPTE WHERE FCBCCIN=efaccin),kdspkinvoice.get_AN(efaccin)) AtasNama2 , " +
                     //"(select BNKNAME from BANKS where BNKCODE = 'efacbank') Bank " +
-                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank " +
+                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH and BBRCBANK = EFACBANK) Bank " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = '" + ID + "' and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from kdstrxinvoice where IDH in (select IDH from kdsfakturpajak where IDPENGUSAHA = '" + ID + "')) " +
@@ -3410,6 +3411,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     Pengusaha.Address = dr["AddressPengirim"].ToString();                   
                     Pengusaha.NoRek = dr["NoRek"].ToString();
                     Pengusaha.AN = dr["AtasNama"].ToString();
+                    Pengusaha.AN2 = dr["AtasNama2"].ToString();
                     Pengusaha.Bank = dr["Bank"].ToString();
                 }
 
@@ -4919,9 +4921,10 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "fadregn      AS ProvinsiPengirim, " +
                     "FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek, " +
-                    "kdspkinvoice.get_AN(efaccin) AtasNama, " +
-                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank, " +
-                    " (SELECT Substr(bbradr1 || bbradr2 , 1,50) FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) BankAddress " +
+                    "nvl(kdspkinvoice.get_AN(efaccin),(SELECT FCBIBAN FROM FOUCOMPTE WHERE FCBCCIN=efaccin)) AtasNama, " +
+                    "nvl((SELECT FCBIBAN FROM FOUCOMPTE WHERE FCBCCIN=efaccin),kdspkinvoice.get_AN(efaccin)) AtasNama2 , " +
+                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH and BBRCBANK = EFACBANK) Bank, " +
+                    " (SELECT Substr(bbradr1 || bbradr2 , 1,50) FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH and BBRCBANK = EFACBANK) BankAddress " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = :ID and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from kdstrxinvoice where IDH = :IDH) " +
@@ -4944,6 +4947,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     Pengusaha.NPWP = dr["NPWP"].ToString();
                     Pengusaha.NoRek = dr["NoRek"].ToString();
                     Pengusaha.AN = dr["AtasNama"].ToString();
+                    Pengusaha.AN2 = dr["AtasNama2"].ToString();
                     Pengusaha.Bank = dr["Bank"].ToString();
                     Pengusaha.BankAddress = dr["BankAddress"].ToString();
                 }
@@ -4980,7 +4984,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek, " +
                     "kdspkinvoice.get_AN(efaccin) AtasNama, " +
                     //"(select BNKNAME from BANKS where BNKCODE = efacbank) Bank " +
-                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank " +
+                    " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH and BBRCBANK = EFACBANK ) Bank " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = :ID and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from kdstrxinvoice where IDH in (select IDH from kdsfakturpajak where kode in (" + Kode + "))) " +
@@ -5036,9 +5040,10 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     "fadregn      AS ProvinsiPengirim, " +
                     "FADIDEN      AS NPWP, " +
                     "decode(nvl(efaacount,'0'),'0',kdspkinvoice.get_NoRek(efaccin),efaacount) NoRek, " +
-                    "kdspkinvoice.get_AN(efaccin) AtasNama, " +
-                     " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) Bank, " +
-                    " (SELECT Substr(bbradr1 || bbradr2 , 1,50) FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH) BankAddress " +
+                    "nvl(kdspkinvoice.get_AN(efaccin),(SELECT FCBIBAN FROM FOUCOMPTE WHERE FCBCCIN=efaccin)) AtasNama, " +
+                    "nvl((SELECT FCBIBAN FROM FOUCOMPTE WHERE FCBCCIN=efaccin),kdspkinvoice.get_AN(efaccin)) AtasNama2 , " +
+                     " (SELECT bbrname FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH and BBRCBANK = EFACBANK) Bank, " +
+                    " (SELECT Substr(bbradr1 || bbradr2 , 1,50) FROM bankbranch  WHERE  bbrcbranch = EFACBRANCH and BBRCBANK = EFACBANK) BankAddress " +
                     "FROM fouadres, foudgene, cfdenfac " +
                     "WHERE foudgene.foucnuf = :ID and fouadres.FADCFIN    = foudgene.foucfin and cfdenfac.EFACFIN = foudgene.foucfin and cfdenfac.EFARFOU " +
                     "in (Select SKUID from Hkdstrxinvoice where IDH = :IDH) " +
@@ -5061,6 +5066,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                     Pengusaha.NPWP = dr["NPWP"].ToString();
                     Pengusaha.NoRek = dr["NoRek"].ToString();
                     Pengusaha.AN = dr["AtasNama"].ToString();
+                    Pengusaha.AN2 = dr["AtasNama2"].ToString();
                     Pengusaha.Bank = dr["Bank"].ToString();
                     Pengusaha.BankAddress = dr["BankAddress"].ToString();
                 }
@@ -5088,8 +5094,8 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText =
-                    " select ID,DESCRIPTION,PEMBELI,PENGUSAHA,Total - nvl(BIAYA,'0') as TOTAL2, kdspkinvoice.terbilang_indo(Total - nvl(BIAYA,'0')) TERBILANG, " +
-                    " nvl((select LONGDESC from KDSPARAM where KDSPARAM.ID = KDSFAKTURPAJAK.IDPEMBELI), 'PT. SEKAWAN CHANDRA ABADI') CHANDRATYPE , " +
+                    " select ID,DESCRIPTION,PEMBELI,PENGUSAHA,KDSPKINVOICE.TYPEROUND(Total - nvl(BIAYA,'0')) as TOTAL2, kdspkinvoice.terbilang_indo(KDSPKINVOICE.TYPEROUND2(Total - nvl(BIAYA,'0'))) TERBILANG, " +
+                    " nvl((select LONGDESC from KDSPARAM where KDSPARAM.ID = KDSMSTBAYAR.PEMBELI), 'PT. SEKAWAN CHANDRA ABADI') CHANDRATYPE , " +
                     " DATATUJUAN,ANTUJUAN,BANKTUJUAN,DATAPENGIRIM,ADPENGIRIM, " +
                     " NPWP,STARTDATE,ENDDATE,ADPENERIMA,REKTUJUAN, MODIFIEDDATE FROM KDSMSTBAYAR WHERE ID = '"+ ID +"'";                
 
@@ -6902,12 +6908,12 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 cmd.CommandText = " SELECT " +
                                   " IDH,Kode,IDPENGUSAHA,IDPEMBELI,STATUS,CREATEDDATE,CREATEDBY,nvl(MODIFIEDDATE,'') MODIFIEDDATE,nvl(MODIFIEDBY,'') MODIFIEDBY, " +
                                   " SUM(TotalDataInv) TotalDataInv, SUM(TotalInv) TotalInv, SUM(EXPDETAIL) EXPDETAIL, " +
-                                  " (SUM(TotalInv)) TotalInvWT, TO_CHAR ( (SUM(TotalInv)-(SUM(TotalInv)/1.1)),'999,999,999,999.99') TotalInvT, " +
-                                  " TO_CHAR ( (SUM(TotalInv)/1.1), '999,999,999,999.99') TotalInvNT, EXPHEADER, " +
-                                  " TO_CHAR (((SUM(TotalInv) - SUM(EXPDETAIL))), '999,999,999,999.99') TotalFacWT , TO_CHAR (((SUM(TotalInv) - SUM(EXPDETAIL)) -((SUM(TotalInv) - SUM(EXPDETAIL))/1.1)), '999,999,999,999.99') TotalFacT, " +
-                                  "  TO_CHAR(((SUM(TotalInv) - SUM(EXPDETAIL))/1.1), '999,999,999,999.99') TotalFacNT, " +
-                                  " TO_CHAR(((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER), '999,999,999,999.99') AS LastTotal, " +
-                                  " kdspkinvoice.terbilang_indo(( (((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER)))) AS TERBILANGTotalFacNT " +
+                                  " (SUM(TotalInv)) TotalInvWT, KDSPKINVOICE.TYPEROUND ( (SUM(TotalInv)-(SUM(TotalInv)/1.1))) TotalInvT, " +
+                                  " KDSPKINVOICE.TYPEROUND ( (SUM(TotalInv)/1.1)) TotalInvNT, EXPHEADER, " +
+                                  " KDSPKINVOICE.TYPEROUND (((SUM(TotalInv) - SUM(EXPDETAIL)))) TotalFacWT , KDSPKINVOICE.TYPEROUND (((SUM(TotalInv) - SUM(EXPDETAIL)) -((SUM(TotalInv) - SUM(EXPDETAIL))/1.1))) TotalFacT, " +
+                                  "  KDSPKINVOICE.TYPEROUND(((SUM(TotalInv) - SUM(EXPDETAIL))/1.1)) TotalFacNT, " +
+                                  " KDSPKINVOICE.TYPEROUND(((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER)) AS LastTotal, " +
+                                  " kdspkinvoice.terbilang_indo(KDSPKINVOICE.TYPEROUND2( (((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER)))) AS TERBILANGTotalFacNT " +
                                   " FROM " +
                                   " (SELECT A.IDH, B.IDD, " +
                                   " A.Kode,  A.IDPENGUSAHA,  A.IDPEMBELI,  A.STATUS,  A.CREATEDDATE,  A.CREATEDBY, " +
@@ -7065,12 +7071,12 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 cmd.CommandText = " SELECT " +
                                   " IDH,Kode,IDPENGUSAHA,IDPEMBELI,STATUS,CREATEDDATE,CREATEDBY,nvl(MODIFIEDDATE,'') MODIFIEDDATE,nvl(MODIFIEDBY,'') MODIFIEDBY, " +
                                   " SUM(TotalDataInv) TotalDataInv, SUM(TotalInv) TotalInv, SUM(EXPDETAIL) EXPDETAIL, " +
-                                  " (SUM(TotalInv)) TotalInvWT, TO_CHAR ( (SUM(TotalInv)-(SUM(TotalInv)/1.1)),'999,999,999,999.99') TotalInvT, " +
-                                  " TO_CHAR ( (SUM(TotalInv)/1.1), '999,999,999,999.99') TotalInvNT, EXPHEADER, " +
-                                  " TO_CHAR (((SUM(TotalInv) - SUM(EXPDETAIL))), '999,999,999,999.99') TotalFacWT , TO_CHAR (((SUM(TotalInv) - SUM(EXPDETAIL)) -((SUM(TotalInv) - SUM(EXPDETAIL))/1.1)), '999,999,999,999.99') TotalFacT, " +
-                                  "  TO_CHAR(((SUM(TotalInv) - SUM(EXPDETAIL))/1.1), '999,999,999,999.99') TotalFacNT, " +
-                                  " TO_CHAR(((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER), '999,999,999,999.99') AS LastTotal, " +
-                                  " kdspkinvoice.terbilang_indo(( (((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER)))) AS TERBILANGTotalFacNT " +
+                                  " (SUM(TotalInv)) TotalInvWT, KDSPKINVOICE.TYPEROUND ( (SUM(TotalInv)-(SUM(TotalInv)/1.1))) TotalInvT, " +
+                                  " KDSPKINVOICE.TYPEROUND ( (SUM(TotalInv)/1.1)) TotalInvNT, EXPHEADER, " +
+                                  " KDSPKINVOICE.TYPEROUND (((SUM(TotalInv) - SUM(EXPDETAIL)))) TotalFacWT , KDSPKINVOICE.TYPEROUND (((SUM(TotalInv) - SUM(EXPDETAIL)) -((SUM(TotalInv) - SUM(EXPDETAIL))/1.1))) TotalFacT, " +
+                                  "  KDSPKINVOICE.TYPEROUND(((SUM(TotalInv) - SUM(EXPDETAIL))/1.1)) TotalFacNT, " +
+                                  " KDSPKINVOICE.TYPEROUND(((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER)) AS LastTotal, " +
+                                  " kdspkinvoice.terbilang_indo(KDSPKINVOICE.TYPEROUND2( (((SUM(TotalInv) - SUM(EXPDETAIL)) - EXPHEADER)))) AS TERBILANGTotalFacNT " +
                                   " FROM " +
                                   " (SELECT A.IDH, B.IDD, " +
                                   " A.Kode,  A.IDPENGUSAHA,  A.IDPEMBELI,  A.STATUS,  A.CREATEDDATE,  A.CREATEDBY, " +
@@ -8347,7 +8353,7 @@ namespace KBS.CHANDRA.SSC.FUNCTION
                 cmd.Transaction = trans;
                 cmd.Connection = con;
                 cmd.CommandText =
-                    "Delete KDSPARAM where ID = '" + ID + "' ";
+                    "Delete KDSPARAM where ID = '" + ID + "' and ID != '12' ";
                 cmd.CommandType = CommandType.Text;
 
                 logger.Debug(cmd.CommandText);

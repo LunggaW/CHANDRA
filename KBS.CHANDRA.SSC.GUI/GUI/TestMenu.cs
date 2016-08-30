@@ -7679,6 +7679,15 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 Supplier = function.SelectSupplierByID(FP.IDPENGUSAHA, invH.IDH);
 
+                string DataPengirim = "";
+                if (FP.Pengirim == "PT. SEKAWAN CHANDRA ABADI")
+                {
+                    DataPengirim = "Metro / T.Betung / Simpur / B.Jaya / P.Sewu / BKM";
+                }
+                else
+                {
+                    DataPengirim = "Tj.Karang / Kemiling ";
+                }
 
 
 
@@ -7693,6 +7702,8 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Terbilang", expenseFP.Terbilang),
                         new ReportParameter("LastModified", FP.LastModified.ToString("dd MMM yy")),
                         new ReportParameter("TypeChandra", FP.Pengirim),
+                        new ReportParameter("DetailStore", DataPengirim),   
+
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
 
@@ -7789,12 +7800,20 @@ namespace KBS.CHANDRA.SSC.GUI
 
 
                 Supplier = InvoiceIsHistory ? function.HistorySelectSupplierByID(FP.IDPENGUSAHA, invH.IDH) : function.SelectSupplierByID(FP.IDPENGUSAHA, invH.IDH);
+                string DataPengirim = "";
 
-
-
+                 if ( FP.Pengirim == "PT. SEKAWAN CHANDRA ABADI")
+                        {
+                            DataPengirim = "Metro / T.Betung / Simpur / B.Jaya / P.Sewu / BKM";
+                        }
+                        else
+                        {
+                            DataPengirim = "Tj.Karang / Kemiling ";
+                        }
 
                 ReportParameter[] rptParams = new ReportParameter[]
                     {
+                        
                         new ReportParameter("NPWPPengusahaKenaPajak", Supplier.NPWP),
                         new ReportParameter("CompanyNamePengusahaKenaPajak", Supplier.CompanyName),
                         new ReportParameter("CompanyAddressPengusahaKenaPajak", Supplier.Address),
@@ -7802,7 +7821,8 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Total", decimal.Parse(expenseFP.Total.ToString()).ToString("N")),
                         new ReportParameter("Terbilang", expenseFP.Terbilang),
                         new ReportParameter("LastModified", FP.LastModified.ToString("dd MMM yy")),
-                        new ReportParameter("TypeChandra", FP.Pengirim),
+                        new ReportParameter("TypeChandra", FP.Pengirim),                       
+                        new ReportParameter("DetailStore", DataPengirim),   
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
 
@@ -7904,13 +7924,13 @@ namespace KBS.CHANDRA.SSC.GUI
                     {
                         new ReportParameter("Date", FP.EndDate.ToString("dd-MMM-yyyy")),
                         new ReportParameter("NPWPPenerima", Pembeli.NPWP),
-                        new ReportParameter("CompanyNamePenerima", Penjual.CompanyName),
+                        new ReportParameter("CompanyNamePenerima", Penjual.AN2),
                         new ReportParameter("CompanyAddressPenerima", Penjual.Address),
                         new ReportParameter("CompanyNamePengirim", Pembeli.CompanyName),
                         new ReportParameter("CompanyAddressPengirim", Pembeli.Address),
                         new ReportParameter("NoRekeningCustomer", Penjual.NoRek),
                         new ReportParameter("Terbilang", invH.TERBILANGTotalFacNT),
-                        new ReportParameter("Total", decimal.Parse(invH.LASTTOTAL).ToString("N")),
+                        new ReportParameter("Total", invH.LASTTOTAL),
                         new ReportParameter("FakturPajakNumber", FP.KODE),
 
                     };
@@ -8013,13 +8033,13 @@ namespace KBS.CHANDRA.SSC.GUI
                     {
                         new ReportParameter("Date", FP.EndDate.ToString("dd-MMM-yyyy")),
                         new ReportParameter("NPWPPenerima", Pembeli.NPWP),
-                        new ReportParameter("CompanyNamePenerima", Penjual.CompanyName),
+                        new ReportParameter("CompanyNamePenerima", Penjual.AN2),
                         new ReportParameter("CompanyAddressPenerima", Penjual.Address),
                         new ReportParameter("CompanyNamePengirim", Pembeli.CompanyName),
                         new ReportParameter("CompanyAddressPengirim", Pembeli.Address),
                         new ReportParameter("NoRekeningCustomer", Penjual.NoRek),
                         new ReportParameter("Terbilang", invH.TERBILANGTotalFacNT),
-                        new ReportParameter("Total", decimal.Parse(invH.LASTTOTAL).ToString("N")),
+                        new ReportParameter("Total", invH.LASTTOTAL),
                         new ReportParameter("FakturPajakNumber", FP.KODE),
                         new ReportParameter("Bank", Penjual.Bank),
                         new ReportParameter("BankAddress", Penjual.BankAddress),
@@ -8125,13 +8145,13 @@ namespace KBS.CHANDRA.SSC.GUI
                     {
                         new ReportParameter("Date", FP.EndDate.ToString("dd-MMM-yyyy")),
                         new ReportParameter("NPWPPengirim", Pembeli.NPWP),
-                        new ReportParameter("CompanyNamePenerima", Penjual.CompanyName),
+                        new ReportParameter("CompanyNamePenerima", Penjual.AN2),
                         new ReportParameter("CompanyAddressPenerima", Penjual.Address),                        
                         new ReportParameter("CompanyNamePengirim", Pembeli.CompanyName),
                         new ReportParameter("CompanyAddressPengirim", Pembeli.Address),
                         new ReportParameter("NoRekeningCustomer", Penjual.NoRek),
                         new ReportParameter("Terbilang", invH.TERBILANGTotalFacNT),
-                        new ReportParameter("Total", decimal.Parse(invH.LASTTOTAL).ToString("N")),
+                        new ReportParameter("Total", invH.LASTTOTAL),
                         new ReportParameter("FakturPajakNumber", FP.KODE),
                         new ReportParameter("BANK",  Penjual.Bank),
                         new ReportParameter("BankAddress", Penjual.BankAddress),
@@ -9304,7 +9324,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("CompanyAddressPengirim", Data.AdPengirim),
                         new ReportParameter("NoRekeningCustomer",  Data.NoRekPenerima),
                         new ReportParameter("Terbilang", Data.TotalTerbilang),
-                        new ReportParameter("Total", decimal.Parse(Data.Total).ToString("N")),
+                        new ReportParameter("Total", Data.Total),
                         new ReportParameter("FakturPajakNumber", Data.KODE),
                         new ReportParameter("BANK", Data.BankPenerima),
                         new ReportParameter("BankAddress", ""),
@@ -9384,7 +9404,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("CompanyAddressPengirim", Data.AdPengirim),
                         new ReportParameter("NoRekeningCustomer", Data.NoRekPenerima),
                         new ReportParameter("Terbilang", Data.TotalTerbilang),
-                        new ReportParameter("Total", decimal.Parse(Data.Total).ToString("N")),
+                        new ReportParameter("Total", Data.Total),
                         new ReportParameter("FakturPajakNumber", Data.KODE),
 
                     };
@@ -9461,7 +9481,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("CompanyAddressPengirim", Data.AdPengirim),
                         new ReportParameter("NoRekeningCustomer", Data.NoRekPenerima),
                         new ReportParameter("Terbilang", Data.TotalTerbilang),
-                        new ReportParameter("Total", decimal.Parse(Data.Total).ToString("N")),
+                        new ReportParameter("Total", Data.Total),
                         new ReportParameter("FakturPajakNumber", Data.KODE),
                         new ReportParameter("Bank", Data.BankPenerima),
                         new ReportParameter("BankAddress", ""),
@@ -9645,6 +9665,16 @@ namespace KBS.CHANDRA.SSC.GUI
 
                 Data = function.PrintSlipPembayaran(GlobalVar.GlobalVarKodeInvoice);
 
+                string DataPengirim = "";
+                if (Data.Pengirim == "PT. SEKAWAN CHANDRA ABADI")
+                {
+                    DataPengirim = "Metro / T.Betung / Simpur / B.Jaya / P.Sewu / BKM";
+                }
+                else
+                {
+                    DataPengirim = "Tj.Karang / Kemiling ";
+                }
+
                 ReportParameter[] rptParams = new ReportParameter[]
                     {
                                              
@@ -9656,7 +9686,7 @@ namespace KBS.CHANDRA.SSC.GUI
                         new ReportParameter("Terbilang", Data.TotalTerbilang),
                         new ReportParameter("LastModified", Data.LastModified.ToString("dd MMM yy")),
                         new ReportParameter("TypeChandra", Data.Pengirim),
-                        
+                        new ReportParameter("DetailStore", DataPengirim), 
                     };
                 reportViewerFakturPajak.LocalReport.SetParameters(rptParams);
 

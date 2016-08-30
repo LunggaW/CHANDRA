@@ -102,39 +102,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox16">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Metro / T.Betung / Simpur /  B.Jaya / P.Sewu / BKM</Value>
-                    <Style>
-                      <FontSize>8pt</FontSize>
-                      <FontWeight>Normal</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>0.74356cm</Top>
-            <Left>0cm</Left>
-            <Height>0.673cm</Height>
-            <Width>7.2cm</Width>
-            <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox17">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -157,7 +124,7 @@
             <Left>8.01514cm</Left>
             <Height>0.77361cm</Height>
             <Width>6.4cm</Width>
-            <ZIndex>3</ZIndex>
+            <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -189,7 +156,7 @@
             <Left>15.02929cm</Left>
             <Height>0.5cm</Height>
             <Width>1.40382cm</Width>
-            <ZIndex>4</ZIndex>
+            <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -221,7 +188,7 @@
             <Left>15.02929cm</Left>
             <Height>0.5cm</Height>
             <Width>1.40382cm</Width>
-            <ZIndex>5</ZIndex>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -253,8 +220,8 @@
             <Top>0.00245cm</Top>
             <Left>0cm</Left>
             <Height>0.67056cm</Height>
-            <Width>7.19667cm</Width>
-            <ZIndex>6</ZIndex>
+            <Width>7.48771cm</Width>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -269,7 +236,7 @@
         <KeepTogether>true</KeepTogether>
         <Top>0.39872cm</Top>
         <Left>0.3825cm</Left>
-        <Height>1.83528cm</Height>
+        <Height>1.93731cm</Height>
         <Width>20cm</Width>
         <Style>
           <Border>
@@ -1348,6 +1315,38 @@
           </Border>
         </Style>
       </Rectangle>
+      <Textbox Name="DetailStore">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!DetailStore.Value</Value>
+                <Style>
+                  <FontSize>9pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>DetailStore</rd:DefaultName>
+        <Top>1.07173cm</Top>
+        <Left>0.3825cm</Left>
+        <Height>0.86227cm</Height>
+        <Width>7.48771cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>27cm</Height>
     <Style>
@@ -1389,6 +1388,11 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="TypeChandra">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DetailStore">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>

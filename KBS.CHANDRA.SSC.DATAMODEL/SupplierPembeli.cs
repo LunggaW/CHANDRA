@@ -14,5 +14,6 @@ namespace KBS.CHANDRA.SSC.DATAMODEL
         public string BankAddress { get; set; }
         public string NoRek { get; set; }
         public string AN { get; set; }
+        public string AN2 { get; set; }
     }
 }

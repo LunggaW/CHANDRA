@@ -30,21 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TestMenu));
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource31 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource32 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource33 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource34 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource35 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource36 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource37 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource38 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource39 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource40 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource41 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource42 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource43 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource44 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource45 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource5 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource6 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource7 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource8 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource9 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource10 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource11 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource12 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource13 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource14 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource15 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.KDSTRXINVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DataSetTrxInvoice = new KBS.CHANDRA.SSC.GUI.DataSetTrxInvoice();
             this.KDSFAKTURPAJAKBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -609,6 +609,7 @@
             this.pictureBoxLogoBottomKDS = new System.Windows.Forms.PictureBox();
             this.panelSlipPembayaran = new System.Windows.Forms.Panel();
             this.panelPrintSlip = new System.Windows.Forms.Panel();
+            this.GiroBtn = new System.Windows.Forms.Button();
             this.PrintTransferBtn = new System.Windows.Forms.Button();
             this.PrintCancelBtn = new System.Windows.Forms.Button();
             this.PrintRaboBtn = new System.Windows.Forms.Button();
@@ -663,7 +664,6 @@
             this.label162 = new System.Windows.Forms.Label();
             this.label163 = new System.Windows.Forms.Label();
             this.dataGridSlip = new System.Windows.Forms.DataGridView();
-            this.GiroBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.KDSTRXINVOICEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataSetTrxInvoice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KDSFAKTURPAJAKBindingSource)).BeginInit();
@@ -5943,7 +5943,10 @@
             this.PTypeBox.Items.AddRange(new object[] {
             "Header",
             "Detail",
-            "Pembeli"});
+            "Pembeli",
+            "Rounding",
+            "Normal",
+            "With Decimal"});
             this.PTypeBox.Location = new System.Drawing.Point(360, 144);
             this.PTypeBox.Name = "PTypeBox";
             this.PTypeBox.Size = new System.Drawing.Size(240, 21);
@@ -6543,57 +6546,57 @@
             // 
             // reportViewerFakturPajak
             // 
-            reportDataSource31.Name = "DataSetTrxInvoice";
-            reportDataSource31.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource32.Name = "DataSetCommentHeader";
-            reportDataSource32.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource33.Name = "DataSetExpenseFakturPajak";
-            reportDataSource33.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource34.Name = "DataSetTrxInvoice";
-            reportDataSource34.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource35.Name = "DataSetCommentHeader";
-            reportDataSource35.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource36.Name = "DataSetExpenseFakturPajak";
-            reportDataSource36.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource37.Name = "DataSetTrxInvoice";
-            reportDataSource37.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource38.Name = "DataSetCommentHeader";
-            reportDataSource38.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource39.Name = "DataSetExpenseFakturPajak";
-            reportDataSource39.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource40.Name = "DataSetTrxInvoice";
-            reportDataSource40.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource41.Name = "DataSetCommentHeader";
-            reportDataSource41.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource42.Name = "DataSetExpenseFakturPajak";
-            reportDataSource42.Value = this.DataTableExpenseFakturPajakBindingSource;
-            reportDataSource43.Name = "DataSetTrxInvoice";
-            reportDataSource43.Value = this.KDSTRXINVOICEBindingSource;
-            reportDataSource44.Name = "DataSetCommentHeader";
-            reportDataSource44.Value = this.KDSFAKTURPAJAKBindingSource;
-            reportDataSource45.Name = "DataSetExpenseFakturPajak";
-            reportDataSource45.Value = this.DataTableExpenseFakturPajakBindingSource;
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource31);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource32);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource33);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource34);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource35);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource36);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource37);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource38);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource39);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource40);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource41);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource42);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource43);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource44);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource45);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource31);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource32);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource33);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource34);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource35);
-            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource36);
+            reportDataSource1.Name = "DataSetTrxInvoice";
+            reportDataSource1.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource2.Name = "DataSetCommentHeader";
+            reportDataSource2.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource3.Name = "DataSetExpenseFakturPajak";
+            reportDataSource3.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource4.Name = "DataSetTrxInvoice";
+            reportDataSource4.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource5.Name = "DataSetCommentHeader";
+            reportDataSource5.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource6.Name = "DataSetExpenseFakturPajak";
+            reportDataSource6.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource7.Name = "DataSetTrxInvoice";
+            reportDataSource7.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource8.Name = "DataSetCommentHeader";
+            reportDataSource8.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource9.Name = "DataSetExpenseFakturPajak";
+            reportDataSource9.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource10.Name = "DataSetTrxInvoice";
+            reportDataSource10.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource11.Name = "DataSetCommentHeader";
+            reportDataSource11.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource12.Name = "DataSetExpenseFakturPajak";
+            reportDataSource12.Value = this.DataTableExpenseFakturPajakBindingSource;
+            reportDataSource13.Name = "DataSetTrxInvoice";
+            reportDataSource13.Value = this.KDSTRXINVOICEBindingSource;
+            reportDataSource14.Name = "DataSetCommentHeader";
+            reportDataSource14.Value = this.KDSFAKTURPAJAKBindingSource;
+            reportDataSource15.Name = "DataSetExpenseFakturPajak";
+            reportDataSource15.Value = this.DataTableExpenseFakturPajakBindingSource;
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource6);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource7);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource8);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource9);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource10);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource11);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource12);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource13);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource14);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource15);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource2);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource3);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource4);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource5);
+            this.reportViewerFakturPajak.LocalReport.DataSources.Add(reportDataSource6);
             this.reportViewerFakturPajak.LocalReport.ReportEmbeddedResource = "KBS.CHANDRA.SSC.GUI.Report.FakturPajak.rdlc";
             this.reportViewerFakturPajak.Location = new System.Drawing.Point(30, 16);
             this.reportViewerFakturPajak.Name = "reportViewerFakturPajak";
@@ -6663,6 +6666,17 @@
             this.panelPrintSlip.Size = new System.Drawing.Size(1323, 436);
             this.panelPrintSlip.TabIndex = 162;
             this.panelPrintSlip.Visible = false;
+            // 
+            // GiroBtn
+            // 
+            this.GiroBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GiroBtn.Location = new System.Drawing.Point(628, 155);
+            this.GiroBtn.Name = "GiroBtn";
+            this.GiroBtn.Size = new System.Drawing.Size(125, 35);
+            this.GiroBtn.TabIndex = 163;
+            this.GiroBtn.Text = "Bilyet Giro";
+            this.GiroBtn.UseVisualStyleBackColor = true;
+            this.GiroBtn.Click += new System.EventHandler(this.GiroBtn_Click);
             // 
             // PrintTransferBtn
             // 
@@ -7226,17 +7240,6 @@
             this.dataGridSlip.Size = new System.Drawing.Size(1273, 285);
             this.dataGridSlip.TabIndex = 0;
             // 
-            // GiroBtn
-            // 
-            this.GiroBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GiroBtn.Location = new System.Drawing.Point(628, 155);
-            this.GiroBtn.Name = "GiroBtn";
-            this.GiroBtn.Size = new System.Drawing.Size(125, 35);
-            this.GiroBtn.TabIndex = 163;
-            this.GiroBtn.Text = "Bilyet Giro";
-            this.GiroBtn.UseVisualStyleBackColor = true;
-            this.GiroBtn.Click += new System.EventHandler(this.GiroBtn_Click);
-            // 
             // TestMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7253,10 +7256,6 @@
             this.Controls.Add(this.comboBoxSite);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.panelSlipPembayaran);
-            this.Controls.Add(this.panelUserManagement);
-            this.Controls.Add(this.panelGenerateLabelSTCK);
-            this.Controls.Add(this.panelStockTakeUpload);
             this.Controls.Add(this.InvoiceParamPanel);
             this.Controls.Add(this.panelDisplay);
             this.Controls.Add(this.panelSalesHistory);
@@ -7283,6 +7282,10 @@
             this.Controls.Add(this.panelPaymentProcess);
             this.Controls.Add(this.panelPrintInvoice);
             this.Controls.Add(this.shapeContainer1);
+            this.Controls.Add(this.panelSlipPembayaran);
+            this.Controls.Add(this.panelUserManagement);
+            this.Controls.Add(this.panelGenerateLabelSTCK);
+            this.Controls.Add(this.panelStockTakeUpload);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;

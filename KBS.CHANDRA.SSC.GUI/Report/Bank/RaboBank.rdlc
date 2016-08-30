@@ -13,6 +13,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -23,7 +24,7 @@
         <Top>8.32cm</Top>
         <Left>1.2cm</Left>
         <Height>0.5cm</Height>
-        <Width>7.5cm</Width>
+        <Width>7.8175cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -44,6 +45,7 @@
                 <Value>=Parameters!CompanyNamePenerima.Value</Value>
                 <Style>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -54,7 +56,7 @@
         <Top>4.43312cm</Top>
         <Left>1.2cm</Left>
         <Height>0.68521cm</Height>
-        <Width>7.5cm</Width>
+        <Width>7.8175cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -77,6 +79,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -112,6 +115,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -147,6 +151,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -156,7 +161,7 @@
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Top>10.78208cm</Top>
         <Left>9.4cm</Left>
-        <Height>0.8cm</Height>
+        <Height>0.95875cm</Height>
         <Width>11.61125cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -180,6 +185,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -189,7 +195,7 @@
         <rd:DefaultName>CompanyAddressPengirim</rd:DefaultName>
         <Top>4.35cm</Top>
         <Left>12.5525cm</Left>
-        <Height>0.5cm</Height>
+        <Height>0.59694cm</Height>
         <Width>8.45876cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
@@ -212,6 +218,7 @@
                 <Value>=Parameters!CompanyNamePengirim.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -219,9 +226,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>CompanyNamePengirim</rd:DefaultName>
-        <Top>3.93313cm</Top>
+        <Top>3.90667cm</Top>
         <Left>12.5525cm</Left>
-        <Height>0.5cm</Height>
+        <Height>0.52646cm</Height>
         <Width>8.45876cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
@@ -245,6 +252,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>11pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -257,7 +265,7 @@
         <Top>9.14368cm</Top>
         <Left>1.2cm</Left>
         <Height>0.5cm</Height>
-        <Width>7.5cm</Width>
+        <Width>7.8175cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <Border>
@@ -280,6 +288,7 @@
                 <Style>
                   <FontFamily>Courier New</FontFamily>
                   <FontSize>9pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -289,7 +298,7 @@
         <rd:DefaultName>NPWPPengirim</rd:DefaultName>
         <Top>5.0175cm</Top>
         <Left>16.04034cm</Left>
-        <Height>0.5cm</Height>
+        <Height>0.60583cm</Height>
         <Width>4.97092cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
@@ -312,6 +321,7 @@
                 <Value>=Parameters!BankAddress.Value</Value>
                 <Style>
                   <FontFamily>Courier New</FontFamily>
+                  <FontWeight>Bold</FontWeight>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -322,7 +332,7 @@
         <Top>9.71423cm</Top>
         <Left>1.2cm</Left>
         <Height>0.65306cm</Height>
-        <Width>7.5cm</Width>
+        <Width>7.8175cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <Border>
